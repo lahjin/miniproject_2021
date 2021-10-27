@@ -1,0 +1,93 @@
+footer {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #333;
+    background-color: #1B1C1F;
+    color: white;
+}
+
+footer .inner {
+    padding: 40px 0 60px 0;
+}
+
+footer .menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+footer .menu li {
+    position: relative;
+}
+
+footer .menu li::before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    background-color: #555;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1px;
+    margin: auto;
+}
+
+footer .menu li:last-child::before {
+    display: none;
+}
+
+footer .menu li a {
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+footer > .inner > .btn-group {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+footer > .inner > .btn-group > .btn {
+    display: block;
+    width: 95px;
+    height: 40px;
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+footer > .inner > .btn-group > a {
+    display: block;
+    line-height: 40px;
+}
+
+footer .info {
+    margin-top: 30px;
+    text-align: center;
+}
+
+footer .info span {
+    margin-right: 20px;
+    color: #999;
+    font-size: 12px;
+}
+
+footer .info span:last-child {
+    margin-right: 0;
+}
+
+footer > .inner > .logo {
+    text-align: center;
+    margin-top: 20px;
+    color: #616161;
+}

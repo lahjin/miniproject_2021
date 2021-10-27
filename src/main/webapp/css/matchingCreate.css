@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+}
+
+.wrap::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+    content: "";
+    background-image: url('../asset/loginWallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrap > h1:first-child {
+    margin: 20px;
+    font-size: 40px;
+    color: #f6f5f0;
+    text-align: center;
+}
+
+.formDiv {
+    width: 685px;
+    height: 710px;
+    border-radius: 15px;
+    background-color: #f6f5f0;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, .3);
+    color: #555;
+}
+
+.formDiv > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 685px;
+    height: auto;
+}
+
+.area:not(:nth-child(6)) {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 650px;
+    height: 65px;
+    margin-bottom: 20px;
+}
+
+/* Input과 label값 */
+
+.formDiv > form input {
+    background-color: #fff;
+    width: 420px;
+    height: 49px;
+    border: 1px solid lightgray;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+}
+
+form > .area h3 {
+    font-size: 15px;
+    width: 120px;
+    text-align: center;
+}
+
+/* 텍스트 영역 */
+form > div:first-child {
+    margin: 30px;
+}
+
+.mainlogo {
+    font-size: 45px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #555;
+}
+
+/* 서비스 영역 */
+.area:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    width: 685px;
+    height: 240px;
+}
+
+.area:nth-child(3) > h3 {
+    font-size: 24px;
+    width: 120px;
+    text-align: center;
+}
+
+.slide_wrapper {
+    position: relative;
+    width: 685px;
+    margin-top: 15px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.items > label:hover {
+    box-shadow: 0 2px 8px rgba(12, 12, 12, 0.8);
+    cursor: pointer;
+}
+
+.items > label > img {
+    width: 100px;
+    height: 100px;
+}
+
+.serviceRadio {
+    display: none;
+}
+
+.serviceRadio:checked + label {
+    box-shadow: 0 4px 16px rgba(0, 228, 233, 0.7);
+}
+
+.items img {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100px;
+    height: 100px;
+}
+
+.items label {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.slides {
+    position: absolute;
+    left: 0;
+    transition: left 0.5s ease-out;
+}
+
+.slides li:not(:last-child) {
+    float: left;
+    margin-right: 30px;
+}
+
+.controls {
+    margin: 160px 0;
+    text-align: center;
+}
+
+.controls span {
+    background: #333;
+    border-radius: 50px;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 60px;
+    cursor: pointer;
+}
+
+/* 모집인원*/
+form > div:nth-child(4) select {
+    width: 420px;
+    height: 49px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+form > div:nth-child(5) select {
+    width: 420px;
+    height: 49px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+/* 마지막 버튼  */
+form > div:nth-child(6) input {
+    width: 140px;
+    height: 45px;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+
+form > div:nth-child(6) input[type="button"] {
+    background-color: #fff;
+    color: black;
+}
+
+
+/* 유효성검사 UI */
+.unableValue {
+    font-size: 1.5em;
+    color: rgb(242, 116, 116);
+}
+
+.ableValue {
+    font-size: 1.5em;
+    color: rgb(165, 220, 134);
+}
+
+.hiddenUI {
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0);
+}

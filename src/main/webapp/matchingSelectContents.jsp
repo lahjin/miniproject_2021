@@ -148,6 +148,7 @@
                 </div>
                 <div class="value-info">
                     <label id="entry_period">period?</label>
+
                 </div>
             </div>
             <div class="price-info">

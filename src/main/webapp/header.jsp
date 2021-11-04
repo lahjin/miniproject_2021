@@ -6,7 +6,7 @@
                 <ul>
                     <li><a href="main.jsp">Home</a></li>
                     <li><a href="matchingMain.jsp">Matching</a></li>
-                    <li><a href="#">Community</a></li>
+                    <li><a href="community.jsp">Community</a></li>
                     <li><a href="#">Grade</a></li>
                     <li><a href="#">CS</a></li>
                     <% if (session.getAttribute("member_id") == null){ %>

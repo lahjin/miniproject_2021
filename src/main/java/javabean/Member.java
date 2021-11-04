@@ -17,6 +17,10 @@ public class Member {
     private String member_status;   //회원상태
     private String member_type;     //회원구분
     private int member_point;       //회원포인트
+    private String member_tos;      //회원이용약관
+    private String member_personal; //회원개인정보수집
+    private String member_promotion;//회원프로모션수신
+    private String member_log;      //회원로그인기록
 
     public String getMember_code() {
         return member_code;
@@ -129,4 +133,37 @@ public class Member {
     public void setMember_point(int member_point) {
         this.member_point = member_point;
     }
+
+    public String getMember_tos() {
+        return member_tos;
+    }
+
+    public void setMember_tos(String member_tos) {
+        this.member_tos = member_tos;
+    }
+
+    public String getMember_personal() {
+        return member_personal;
+    }
+
+    public void setMember_personal(String member_personal) {
+        this.member_personal = member_personal;
+    }
+
+    public String getMember_promotion() {
+        return member_promotion;
+    }
+
+    public void setMember_promotion(String member_promotion) {
+        this.member_promotion = member_promotion;
+    }
+
+    public String getMember_log() {
+        return member_log;
+    }
+
+    public void setMember_log(String member_log) {
+        this.member_log = member_log;
+    }
+
 }

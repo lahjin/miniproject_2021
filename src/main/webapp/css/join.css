@@ -77,9 +77,10 @@
     text-align: left;
 }
 
-.background > .joincard > form > .area h3 {
-    font-size: 15px;
-    width: 120px;
+.background > .joincard > form > .area label {
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 142px;
     text-align: center;
 }
 
@@ -116,11 +117,14 @@ form > div:first-child > .mainlogo {
     text-align: center;
 }
 
-.background > .joincard > form > div:nth-child(11)  input[type="button"] {
+.background > .joincard > form > div:nth-child(11)  input[type="button"]:last-child {
     background-color: #fff;
     color: black;
 }
 
+.background > .joincard > form > div:nth-child(12){
+    display: none;
+}
 /* 유효성검사 UI */
 .unableValue{
     font-size: 1.5em;

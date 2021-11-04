@@ -48,7 +48,7 @@
 
         <!-- 2번 -->
         <label class="checkbox">
-            <input type="checkbox" class="three" name="checkBox"onclick="clickbtn();">
+            <input type="checkbox" class="three" name="checkBox" onclick="clickbtn();">
             <span class="icon"></span>
             <span class="text">Assemble 개인정보 수집 및 이용 동의</span> <span style="color: green;">(필수)</span>
         </label>

@@ -1,5 +1,5 @@
 // 유효성검사 정규식 패턴
-var idReg = /^[a-z0-9]{4,12}$/g; //영문 소문자 or 숫자로만 이루어진 4~12글자
+
 
 //swalPreset에 넘겨줄 매개변수
 var icon = null;
@@ -16,22 +16,29 @@ function loginCheck(){
         toastPreset(icon, title);
         return false;
     }
+
+    const idReg = /^[a-z0-9]{4,12}$/g; //영문 소문자 or 숫자로만 이루어진 4~12글자
+
     //아이디 정규식 위반
-    else if(!idReg.test(document.getElementById('member_id').value)){
+    if(!idReg.test(document.getElementById('member_id').value)){
         icon = 'warning';
         title = '아이디를 4~12자의 영문 소문자, 숫자로 입력해주세요!';
         toastPreset(icon, title);
         return false;
     }
+
     //비밀번호 입력 x
-    else if(!document.getElementById("member_pwd").value){
+    if(!document.getElementById("member_pwd").value){
         icon = 'error';
         title = '비밀번호를 입력해주세요!';
         toastPreset(icon, title);
         return false;
     }
+
+    const pwdReg = /^(?=.*[A-Za-z])(?=.*\d).{8,16}$/g; //최소 한개의 문자 + 숫자 특수문자는 선택 8~16글자
+
     //비밀번호 정규식 위반
-    else if(document.getElementById("member_pwd").value.length < 8 || document.getElementById("member_pwd").value.length > 16){
+    if(!pwdReg.test(document.getElementById("member_pwd").value)){
         icon = 'warning';
         title = '비밀번호를 8~16자의 영문 대소문자, 숫자, 특수문자로 입력해주세요!';
         toastPreset(icon, title);

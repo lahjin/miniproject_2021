@@ -59,8 +59,8 @@ public class MemberDAO{
     public boolean register(Member member) {
         String sql = "INSERT INTO `miniproject`.`member` (" +
                 "`member_code`, `member_id`, `member_pwd`, `member_name`, " +
-                "`member_email`, `member_phone`, `member_birth`, `member_gender`, `member_nickname`) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "`member_email`, `member_phone`, `member_birth`, `member_gender`, `member_nickname`, `member_promotion`) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try {
             pstmt = mysqlDB.getConn().prepareStatement(sql);
             pstmt.setString(1, member.getMember_code());
@@ -72,6 +72,7 @@ public class MemberDAO{
             pstmt.setString(7, member.getMember_birth());
             pstmt.setString(8, member.getMember_gender());
             pstmt.setString(9, member.getMember_nickname());
+            pstmt.setString(10, member.getMember_promotion());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {

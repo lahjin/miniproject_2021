@@ -2,7 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("utf-8"); %> <%-- post방식 한글인코딩 깨짐 문제 해결--%>
 <%@page import="member.MemberDAO" %>
-<%@ page import="generator.CodeGenerator" %> <%-- MemberDAO 클래스 import--%>
+<%@ page import="generator.CodeGenerator" %>
+<%@ page import="member.ValidityCheck" %>
 <jsp:useBean id="member" class="javabean.Member"/> <%-- 자바빈 방식으로 데이터를 class 단위로 이동 --%>
 <jsp:setProperty name="member" property="*"/>      <%-- member로 불러온 자바빈에 property가 일치하는 값에 자동으로 set 해줌 --%>
 <html>
@@ -14,8 +15,28 @@
 </head>
 <body>
     <%
-//        MemberDAO memberDAO = new MemberDAO();
-//        String member_code = memberDAO.memberCodeGenerator("일반");
+        try{
+            boolean check = new ValidityCheck().signUpCheck(member);
+            if(!check){ %>
+                <script>
+                let icon = "error";
+                let title = "올바르지않은 데이터!";
+                let text = "확인 버튼을 클릭하면 회원가입 페이지로 이동합니다.";
+                let link = "join.jsp";
+                swalOnButtonPreset(icon, title, text, link);
+                </script>
+    <%          return;
+            }
+        }catch (NullPointerException e){ %>
+            <script>
+                let icon = "error";
+                let title = "올바르지않은 데이터!";
+                let text = "확인 버튼을 클릭하면 회원가입 페이지로 이동합니다.";
+                let link = "join.jsp";
+                swalOnButtonPreset(icon, title, text, link);
+            </script>
+    <%      return;
+        }
         String member_code = new CodeGenerator().memberCodeGenerator("일반");
         //하루 회원가입 인원 초과
         if(member_code.equals("trafficOver")){ %>

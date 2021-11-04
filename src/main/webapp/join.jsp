@@ -9,16 +9,26 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/sweetalert.js"></script>
     <script src="./js/swalPreset.js"></script>
-    <script src="./js/join.js"></script>
+    <script src="./js/join.js" defer></script>
 </head>
 <body>
+<%
+    String[] checkBox = request.getParameterValues("checkBox");
+    String promotionChecked = null;
+
+    if (checkBox.length == 4){
+        promotionChecked = "Y";
+    }else{
+        promotionChecked = "N";
+    }
+%>
     <div class="background">
         <h1>계정 만들기</h1>
 
         <div class="joincard">
             <!-- form태그 시작 -->
 
-            <form action="joinAction.jsp" name="join_frm" method="post" accept-charset="UTF-8">
+            <form name="join_frm" method="post" accept-charset="UTF-8">
                 <!-- 제목 a태그 -->
                 <div class="area">
                     <a href="main.jsp" class="mainlogo">Assemble</a>
@@ -26,54 +36,54 @@
 
                 <!-- 아이디 입력 div -->
                 <div class="area">
-                    <h3>아이디</h3>
-                    <input type="text" id="member_id" name="member_id" placeholder="등록하실 아이디를 입력해주세요." onblur="idCheck()"/>
+                    <label for="member_id">아이디</label>
+                    <input type="text" id="member_id" name="member_id" placeholder="등록하실 아이디를 입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_id"></i>
                 </div>
 
                 <!-- 비밀번호 입력 div -->
                 <div class="area">
-                    <h3>비밀번호</h3>
-                    <input type="password" id="member_pwd" name="member_pwd" placeholder="비밀번호를 입력해주세요." onblur="pwdCheck()"/>
+                    <label for="member_pwd">비밀번호</label>
+                    <input type="password" id="member_pwd" name="member_pwd" placeholder="비밀번호를 입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_pwd"></i>
                 </div>
 
                 <!-- 비밀번호 재확인 div -->
                 <div class="area">
-                    <h3>비밀번호 재확인</h3>
-                    <input type="password" id="member_pwd2" name="member_pwd2" placeholder="비밀번호를 재입력해주세요." onblur="pwd2Check()"/>
+                    <label for="member_pwd2">비밀번호  재확인</label>
+                    <input type="password" id="member_pwd2" name="member_pwd2" placeholder="비밀번호를 재입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_pwd2"></i>
                 </div>
 
                 <!-- 이름입력 div -->
                 <div class="area">
-                    <h3>이름</h3>
-                    <input type="text" id="member_name" name="member_name" placeholder="이름을 입력해주세요." onblur="nameCheck()"/>
+                    <label for="member_name">이름</label>
+                    <input type="text" id="member_name" name="member_name" placeholder="이름을 입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_name"></i>
                 </div>
 
                 <!-- 닉네임 영역 -->
                 <div class="area">
-                    <h3>닉네임</h3>
-                    <input type="text" id="member_nickname" name="member_nickname" placeholder="닉네임을 입력해주세요." onblur="nicknameCheck()"/>
+                    <label for="member_nickname">닉네임</label>
+                    <input type="text" id="member_nickname" name="member_nickname" placeholder="닉네임을 입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_nickname"></i>
                 </div>
 
                 <div class="area">
-                    <h3>이메일</h3>
-                    <input type="email" id="member_email" name="member_email" placeholder="이메일을 입력해주세요." onblur="emailCheck()"/>
+                    <label for="member_email">이메일</label>
+                    <input type="email" id="member_email" name="member_email" placeholder="이메일을 입력해주세요."/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_email"></i>
                 </div>
 
                 <div class="area">
-                    <h3>생년월일</h3>
-                    <input type="text" id="member_birth" name="member_birth" placeholder="생년월일을 입력해주세요. ex)2021-01-01" onblur="birthCheck()"/>
+                    <label for="member_birth">생년월일</label>
+                    <input type="text" id="member_birth" name="member_birth" placeholder="생년월일을 입력해주세요. ex)20210101"/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_birth"></i>
                 </div>
 
                 <div class="area">
-                    <h3>성별</h3>
-                    <select id="member_gender" name="member_gender" onchange="genderCheck()">
+                    <label for="member_gender">성별</label>
+                    <select id="member_gender" name="member_gender">
                         <option value="성별">성별</option>
                         <option value="남자">남자</option>
                         <option value="여자">여자</option>
@@ -82,27 +92,21 @@
                 </div>
 
                 <div class="area">
-                    <h3>전화번호</h3>
-                    <input type="text"  id="member_phone" name="member_phone" placeholder="전화번호를 입력해주세요. ex)010-1234-5678" onblur="phoneCheck()"/>
+                    <label for="member_phone">전화번호</label>
+                    <input type="text"  id="member_phone" name="member_phone" placeholder="전화번호를 입력해주세요. ex)01012345678"/>
                     <i class="far fa-times-circle hiddenUI" id="validityCheck_phone"></i>
                 </div>
 
                 <div class="area">
-                    <input type="submit" value="가입하기" name="signup" onclick="return signInCheck()">
-                    <input type="button" value="취소하기" name="cancel" onclick="javascript:history.go(-1)">
+                    <input type="button" value="가입하기" id="signup" name="signup">
+                    <input type="button" value="취소하기" id="cancel" name="cancel">
                 </div>
-                <%--유효성 검사 여부 확인 div--%>
-                <div class="validityCheck" id="validityCheck" style="display: none">
-                    <span class="validityCheck_id" id="enableId" name="enableId" hidden></span>
-                    <span class="validityCheck_pwd" id="enablePwd" name="enablePwd" hidden></span>
-                    <span class="validityCheck_pwd2" id="enablePwd2" name="enablePwd2" hidden></span>
-                    <span class="validityCheck_name" id="enableName" name="enableName" hidden></span>
-                    <span class="validityCheck_nickname" id="enableNickname" name="enableNickname" hidden></span>
-                    <span class="validityCheck_email" id="enableEmail" name="enableEmail" hidden></span>
-                    <span class="validityCheck_birth" id="enableBirth" name="enableBirth" hidden></span>
-                    <span class="validityCheck_gender" id="enableGender" name="enableGender" hidden></span>
-                    <span class="validityCheck_phone" id="enablePhone" name="enablePhone" hidden></span>
+
+                <div>
+                    <label for="member_promotion">프로모션 동의</label>
+                    <input type="text" id="member_promotion" name="member_promotion" value="<%= promotionChecked %>" readonly>
                 </div>
+
             </form>
         </div>
 

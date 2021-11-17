@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.community-write-modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.review_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    background-color: white;
+    border-radius: 15px;
+}
+.modal--title-info{
+    margin: 10px;
+    text-align: center;
+}
+.main_title{
+    margin: 10px;
+    width: 95%;
+    border-bottom: 1px solid black;
+}
+
+.main_title input{
+    width: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: "HelveticaNeueLT Pro 55 Roman";
+    border: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.sub_title{
+    margin: 10px;
+    width: 95%;
+}
+
+.sub_title input{
+    width: 100%;
+    font-size: large;
+    font-family: "HelveticaNeueLT Pro 55 Roman";
+    border: none;
+}
+.sub-menu-index{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    width: 95%;
+    text-align: center;
+}
+
+.menu1{
+    display: flex;
+}
+.menu1 > span{
+    margin: 5px;
+}
+.menu1 > select{
+    margin: 5px;
+    width: 80px;
+    text-align: center;
+}
+.menu2{
+    width: 100px;
+    height: 30px;
+}
+
+.nickname{
+    border-bottom: solid 1px black;
+}
+
+.ott_box{
+    width: 500px;
+    height: 50px;
+}
+
+.ott_box select{
+    width: 500px;
+    height: 50px;
+    text-align: center;
+}
+.main_write{
+    width: 500px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_write textarea{
+    width: 500px;
+    height: auto;
+    font-family: "HelveticaNeueLT Pro 55 Roman";
+    resize: none;
+}
+
+.star_rating{
+    height: 100px;
+    display:flex;
+    font-size:5em;
+    justify-content:space-around;
+    padding:0 .2em;
+    text-align:center;
+}
+
+.star_rating input {
+    display:none;
+}
+
+.star_rating label {
+    color:#96DFD8;
+    cursor:pointer;
+}
+
+.button_box{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.button_box input{
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 7px;
+}
+
+.button_box input:first-child{
+    background-color: rgb(65, 105, 225);
+}
+
+.button_box input:last-child{
+    background-color: rgb(136, 136, 136);
+}
+
+.sub_wrap{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+
+}
+
+textarea {
+    overflow-y: scroll;
+    resize: none;
+}

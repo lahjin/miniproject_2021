@@ -1,287 +1,204 @@
-/* 전체 wrap class이름 */
-.matching_select{
-    margin: 20px auto;
-    width: 60%;
-    height: 700px;
-    border:1px solid black;
+* {
+    margin: 0px;
+    padding: 0px;
 }
-
-/* 중간마다 큰 텍스트 div */
-.service_text{
-    text-align: center;
-}
-
-/* 첫번째패널 옵션 패널  시작*/
-.option_panel{
+.matching_select {
     display: flex;
-    justify-content: space-around;
     margin: 0 auto;
+    width: 1300px;
+    height: 950px;
+}
+/* 사이드바 영역 시작 */
+.sidebar {
+    width: 400px;
+    background-color: rgb(89, 37, 244);
+    color: white;
+}
+
+.sidebar > h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 250px;
+}
+
+.sidebar > img {
+    width: 230px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 95%;
-    height: 30%;
+    margin-left: 80px;
 }
 
-
-.service{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 95%;
-    border:1px solid black;
+.sidebar > input {
+    color: white;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    background-color:rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    display: block;
+    cursor: pointer;
+    margin-left: 115px;
 }
 
-.service_img{
-    width: 80%;
-    height: 80%;
-}
+/* 사이드바 영역 끝 */
 
-.matching_state{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 60%;
-    height: 95%;
-    border: 1px solid black;
-}
-
-.matching_state > div{
-    width: 95%;
-    height: 98%;
-}
-
-.weeklyState > div{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 48%;
-    line-height: 93.83px;
-}
-.weeklyState > div > label{
-    text-align: center;
-}
-.weeklyState > div > label:nth-child(1){
-    width: 60%;
-}
-.weeklyState > div > label:nth-child(2){
-    width: 30%;
-}
-/* 첫번째패널 옵션 패널  끝*/
-
-/* 파티 내역 클래스 시작*/
-.select_party{
-    display: flex;
-    justify-content: space-around;
-}
-
-.party{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 30%;
-    height: 250px;
-    border: 1px solid black;
-}
-.info1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 95%;
-}
-.info1 > img{
-    width: 64px; /* 이미지 크기로 픽셀 수정*/
-    height: 64px; /* 이미지 크기로 픽셀 수정*/
-}
-.info2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 68%;
-    height: 95%;
-}
-.info2 > div{
-    display: flex;
-    justify-content: space-around;
-    margin: 5px;
-    width: 98%;
-    height: 45%;
-}
-
-.info2_top > div{
-    width: 45%;
+/* 파티 영역 시작 */
+.party-area {
+    margin-left: 20px;
+    padding-top: 80px;
+    width: 800px;
     height: auto;
-    border: 1px solid black;
-}
-.info2_bottom > div{
-    width: 95%;
-    border: 1px solid black;
-}
-.grade, .period, .price{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-content: space-around;
 }
-/* 파티 내역 클래스 끝*/
 
-/* 버튼 패널 클래스 시작*/
-.button_panel{
-    margin: 0 auto;
-    margin-top: 5px;
+/* 상단 "파티 찾기" 영역 */
+.party-area > .top-text {
+    margin: 40px 0px 10px 0px;
+}
+
+.party-area > .top-text > p {
+    font-size: 15px;
+}
+
+/* 파티 선택하기 영역 */
+.middle-area {
+    width: 800px;
+    height: 500px;
     display: flex;
-    justify-content: space-around;
-    width: 75%;
-    height: 20%;
+    flex-wrap: wrap;
 }
 
-.button_panel > div{
-    width: 30%;
-    height: 100%;
-    text-align: center;
-}
-/* 버튼 패널 클래스 끝*/
-
-
-
-/*모달창*/
-.modal-wrap {
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 100;
-}
-
-.modal-matchingInfo {
-    width: 700px;
-    height: auto;
-    background-color: white;
+.middle-area > .party-info {
+    width: 380px;
+    height: 150px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px 0 rgba(3, 3, 3, 0.37);
-    text-align: center;
+    margin-right: 10px;
+    color: black;
+    background-color: #f5f5f7;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.185);
 }
-
-.modal-matchingInfo > div {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.modal-matchingInfo > div > div div {
-    border: 1px solid black;
-}
-
-.modal-title {
-    font-size: 1.4em;
-}
-
-.info {
+.middle-area > .party-null{
     display: flex;
     justify-content: center;
-    height: 65px;
-}
-
-.info > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.code-info {
-    width: 30%;
-}
-
-.service-info {
-    width: 25%;
-}
-
-.period-info {
-    width: 15%;
-}
-
-.price-info {
-    width: 25%;
-}
-
-.party-entry {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    height: auto;
+    width: 380px;
+    height: 150px;
+    border-radius: 15px;
+    margin-right: 10px;
+    color: black;
+    background-color: #f5f5f7;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.185);
+}
+/* div 안쪽 */
+.middle-area > .party-info > div {
+    margin: 5px 0px 0px 10px;
+}
+/* 위에 탑 택스트 */
+.middle-area > .party-info > .top-text {
+    width: 360px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+/* 파티생성날짜 */
+.middle-area > .party-info > .date {
+    display: inline-block;
+    margin-left: 12px;
+}
+/* 요금 */
+.middle-area > .party-info > .fee {
+    font-size: 30px;
+    margin-left: 12px;
 }
 
-.party-entry > div {
-    width: 95%;
-}
-
-.entry-index {
+.middle-area > .party-info > .party-btnbox > .user-countbox {
+    width: 330px;
+    height: 40px;
     display: flex;
 }
 
-.entry-index > div:nth-child(1), .entry-info > div:nth-child(1) {
-    width: 55%;
+.middle-area > .party-info >  .party-btnbox > .user-countbox > img {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    margin-top: auto;
+    background-color: lightgray;
+    margin-right: 5px;
 }
 
-.entry-index > div:nth-child(2), .entry-info > div:nth-child(2) {
-    width: 45%;
+/* 유저가 들어왔을때 */
+.middle-area > .party-info >  .party-btnbox > .user-countbox > .onuser {
+    background-color: beige;
 }
 
-.entry-index, .entry-list > div, .entry-info > div {
-    height: 45px;
-    line-height: 45px;
-}
-
-.entry-info {
+.middle-area > .party-info > .party-btnbox {
+    width: 360px;
+    height: 40px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.middle-area > .party-info > .party-btnbox > input {
+    width: 90px;
+    height: 30px;
+    border: none;
+    margin-top: 10px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
-.entry-count {
-    display: flex;
-    justify-content: center;
-    height: 65px;
-    line-height: 65px;
+.middle-area > .party-info  > .party-btnbox > input:hover {
+    background-color: orange;
 }
 
-.entry-count > div {
-    display: flex;
-    width: 47.5%;
-}
-
-.entry-count .data-info {
-    width: 45%;
-}
-
-.entry-count .value-info {
-    width: 55%;
-}
-
-.entry-btn {
-    display: flex;
-    justify-content: center;
-    height: 65px;
-}
-
-.entry-btn > button {
-    margin: 10px;
-    width: 120px;
+.circle {
+    border: 3px solid black;
+    width: 50px;
     height: 50px;
+    border-radius: 100%;
+    text-align: center;
+    display: inline-block;
+    line-height: 50px;
 }
 
-.data-info {
-    font-size: 1.4em;
-    font-weight: bold;
+.no-party {
+    margin: 5px;
+    font-weight: 700;
+    font-size: 1.3em;
 }
 
-.value-info {
-    font-size: 1.2em;
+/* 하단 버튼 div */
+.btn-box {
+    width: 800px;
+
 }
+
+.btn-box > input {
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    background-color: royalblue;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.btn-box > input:first-child {
+    margin-left: 40px;
+}
+.btn-box > .pagenumber {
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 5px;
+}
+

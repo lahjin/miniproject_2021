@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
     <header class="header"> <!-- 헤더 시작-->
-        <a href="./main.jsp" class="logo">Assemble</a>   <!-- 로고 부분-->
+        <a href="./main.jsp" class="logo">MODIVA</a>   <!-- 로고 부분-->
         <nav>
             <div class="menu"> <!-- 메뉴 바 시작-->
                 <ul>

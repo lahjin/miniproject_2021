@@ -44,14 +44,13 @@ public class EnterEntry extends HttpServlet {
             //0이면 가입 가능한 파티
             if(result == 0){
                 int[] nowInfo = new PartyDAO().partyInfo(party_code);
-                System.out.println("now: " + nowInfo[0]);
-                System.out.println("total: "+ nowInfo[1]);
                 if(nowInfo[0] == nowInfo[1]){
                     result = -2;
                 }else if(nowInfo[0] < nowInfo[1]){
                     String entry_code = new CodeGenerator().entryCodeGenerator(party_code);
                     new EntryDAO().addEntry(entry_code,party_code,member_code);
                     new PartyDAO().plusMember(nowInfo[0]+1,party_code);
+                    new PartyDAO().partyComplete(party_code);
                 }
             }
         }

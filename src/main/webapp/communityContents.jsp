@@ -1,286 +1,315 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="community.Community_borderDAO" %>
+<%@ page import="member.MemberDAO" %>
+<%@ page import="service.ServiceDAO" %>
+<%@ page import="genre.GenreDAO" %>
+<%@ page import="javabean.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<!-- 커뮤메인 시작-->
-<div class="comuMainStart">
-    <!-- 메인메뉴 시작-->
-    <form action="" name="" method="post">
-        <!-- 메인메뉴 구성요소 4개 시작-->
-        <div class="fourElements">
-            <div class="searchDiv">
-                <label for="subject" class="itemTitle">OTT Services</label>
-                <select id="subject" name="ottCategory">
-                    <option value="all">전체</option>
-                    <option value="netflix">넷플릭스</option>
-                    <option value="watcha">왓챠</option>
-                    <option value="youtube">유투브프리미엄</option>
-                    <option value="tving">티빙</option>
-                </select>
-            </div>
-            <div class="searchDiv">
-                <label for="period" class="itemTitle">작성날짜범위</label>
-                <select id="period"  name="periodCategory">
-                    <option value="all">전체</option>
-                    <option value="oneDay">지난 1일</option>
-                    <option value="oneMonth">지난 1개월</option>
-                    <option value="oneYear">지난 1년</option>
-                </select>
-            </div>
-            <div class="searchDiv">
-                <label for="writerTitle" class="itemTitle">작성자</label>
-                <input type="text" id="writerTitle"  class="typeArea" value="" onclick="" />
-            </div>
-            <div class="searchDiv">
-                <label for="workTitle"  class="itemTitle">작품명</label>
-                <input type="text" id="workTitle" class="typeArea2" value="" onclick="" />
-            </div>
-        </div>
-        <!-- 메인메뉴 구성요소 4개 끝-->
-        <div class="searchButtonDiv">
-            <!-- 검색버튼 디브 시작-->
-            <input type="button" class="searchButton" value=" Search" onclick="" />
-        </div>
-        <!-- 검색버튼 디브 끝-->
-        <div class="belowPage">
-            <div class="quickMenuDiv">
-                <!-- 퀵메뉴 디브 시작-->
-                <div class="quickSearchBar">
-                    <div class="jumpResult">
-                        <label for="jumpOptions"  class="itemTitle">Page Move</label>
-                        <select name="resulting" id="jumpOptions">
-                            <option value="1">1</option>
-                            <option value="10">10</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="70">70</option>
-                            <option value="100">100</option>
-                        </select>
-                        <label for="quickText"  class="itemTitle">Quick Search 🔎</label>
-                        <input type="text"  id="quickText" class="typeArea2" value="" onclick="" />
-                    </div>
-                </div>
-                <div class="quickMenuGenre">
-                    <div class="quickTitle">
-                        <h3>Genre List</h3>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="qE1" checked>
-                            <label for="qE1"  class="itemTitle">Romance 💋</label>
-                            <label for="qE1"  class="itemTitle">56</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="qE2" checked>
-                            <label for="qE2"  class="itemTitle">Horror 🧛‍</label>
-                            <label for="qE2"  class="itemTitle">23</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="qE3" checked>
-                            <label for="qE3"  class="itemTitle">Drama 📺</label>
-                            <label for="qE3"  class="itemTitle">41</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="qE4" checked>
-                            <label for="qE4"  class="itemTitle">Action 🤾‍</label>
-                            <label for="qE4"  class="itemTitle">55</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="qE5" checked>
-                            <label for="qE5"  class="itemTitle">Comedy 😹</label>
-                            <label for="qE5"  class="itemTitle">56</label>
-                        </div>
-                    </div>
-                </div>
+<div class="community-wrap">
 
-                <div class="quickMenuGrade">
-                    <div class="quickTitle">
-                        <h3>Grade</h3>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="gE1" checked>
-                            <label for="gE1"  class="itemTitle">Bronze 🥉</label>
-                            <label for="gE1"  class="itemTitle">56</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="gE2" checked>
-                            <label for="gE2"  class="itemTitle">Siver 🥈</label>
-                            <label for="gE2"  class="itemTitle">56</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="gE3" checked>
-                            <label for="gE3"  class="itemTitle">Gold 🥇</label>
-                            <label for="gE3"  class="itemTitle">22</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="gE4" checked>
-                            <label for="gE4"  class="itemTitle">Platinum 🔮</label>
-                            <label for="gE4"  class="itemTitle">12</label>
-                        </div>
-                    </div>
-                    <div class="quickList">
-                        <div class="quickElements">
-                            <input type="checkbox" id="gE5" checked>
-                            <label for="gE5"  class="itemTitle">Diamond 💎</label>
-                            <label for="gE5"  class="itemTitle">52</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 퀵메뉴 디브 끝-->
+    <div class="community-menu">
 
-            <div class="reviewDiv">
-                <!-- 리뷰 디브 시작-->
-                <div class="review-box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>👍 356 👎25</span>
-                    </div>
-                </div>
-                <div class="review-box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>👍 356 👎25</span>
-                    </div>
-                </div>
-                <div class="review-box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>👍 356 👎25</span>
-                    </div>
-                </div>
-                <div class="review-box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>👍 356 👎25</span>
-                    </div>
-                </div>
-                <div class="review-box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>👍 356 👎25</span>
-                    </div>
-                </div>
-                <div class="review-box" id="box">
-                    <div class="boxHeader">
-                        <div>듄</div>
-                    </div>
-                    <div class="boxHeaderTwo">
-                        <img src="http://placehold.it/15x15" alt="">
-                        <div>최문철</div>
-                    </div>
-                    <div class="boxContent">
-                        '듄'은 학생들이 무조건 봐야한다. 듄을 영어 타자로 치면 'ebs'이기 때문이다. '듄'은 학생들이 무조건 봐야한다.
-                    </div>
-                    <div class="boxJudgePoint">
-                        <span>☆☆☆☆☆</span>
-                        <span>
-                            <span>👁55</span>
-                            <span>👍356</span>
-                            <span>👎25</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div class="menu-info">
+            <span><i class="fas fa-ellipsis-v"></i> 커뮤니티</span>
+        </div><!-- menu-info 끝-->
 
-            <!-- 리뷰 디브 끝-->
-        </div> <!-- 하단 페이지 끝-->
-        <div class="paging">
-            <input type="button" class="backward" id="first" value="first" onclick="" />
-            <input type="button" class="backward" id="prev" value="previous" onclick="" />
-            <div class="pageIndex">
-                <a href="">1</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">2</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">3</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">4</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">5</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">6</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">7</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">8</a>
-            </div>
-            <div class="pageIndex">
-                <a href="">9</a>
-            </div>
-            <input type="button" class="forward" id="next" value="next" onclick="" />
-            <input type="button" class="forward" id="last" value="last" onclick="" />
-            <input type="button" class="writeButton" value="write" onclick="" />
+        <div class="menu-index">
+            <ul class="index-lists">
+                <li class="index-list">
+                    <a href="#">
+                        <div class="index-div checkedMenu"><i class="fas fa-home"></i></div>
+                    </a>
+                </li>
+                <li class="index-list">
+                    <a href="#">
+                        <div class="index-div defaultMenu"><i class="far fa-chart-bar"></i></div>
+                    </a>
+                </li>
+                <li class="index-list">
+                    <a href="#">
+                        <div class="index-div defaultMenu"><i class="far fa-envelope"></i></div>
+                    </a>
+                </li>
+                <li class="index-list">
+                    <a href="#">
+                        <div class="index-div defaultMenu"><i class="far fa-heart"></i></div>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- menu-index 끝-->
+    </div><!-- community-menu 끝-->
+
+    <div class="community-main">
+        <div class="main-wrap">
+            <div class="search-field">
+
+                <div class="searchBar">
+                    <div class="search-icon"><i class="fas fa-search"></i></div>
+                    <input type="text" placeholder="Search in community....." />
+                    <div class="search-filter"><i class="fas fa-filter"></i></div>
+                </div> <!-- searchBar 끝-->
+
+                <div class="search-filter-log">
+
+                </div> <!-- search-filter-log 끝-->
+
+                <div class="search-filter-index">
+                    <h3>필터</h3>
+                    <div class="index-wrap">
+                        <ul>
+                            <h4>기본</h4>
+                            <hr>
+                            <li><input type="checkbox" id="cm_nickname" value="작성자" checked><label for="cm_nickname">작성자</label></li>
+                            <li><input type="checkbox" id="cm_title" value="작품명" checked><label for="cm_title">작품명</label></li>
+                            <li><input type="checkbox" id="cm_article" value="내용"><label for="cm_article">내용</label></li>
+                        </ul>
+
+                        <ul>
+                            <h4>기간</h4>
+                            <hr>
+                            <li><input type="checkbox" id="cm_total" name="period" value="기간: 전체" checked><label for="cm_total">전체</label></li>
+                            <li><input type="checkbox" id="cm_today" name="period" value="기간: 오늘"><label for="cm_today">오늘</label></li>
+                            <li><input type="checkbox" id="cm_week" name="period" value="기간: 이번주"><label for="cm_week">이번주</label></li>
+                            <li><input type="checkbox" id="cm_month" name="period" value="기간: 이번달"><label for="cm_month">이번달</label>
+                            </li>
+                            <li><input type="checkbox" id="cm_3month" name="period" value="기간: 3개월"><label for="cm_3month">3개월</label>
+                            </li>
+                            <li><input type="checkbox" id="cm_6month" name="period" value="기간: 6개월"><label for="cm_6month">6개월</label>
+                            </li>
+                            <li><input type="checkbox" id="cm_year" name="period" value="기간: 1년"><label for="cm_year">1년</label></li>
+                        </ul>
+
+                        <ul>
+                            <h4>OTT</h4>
+                            <hr>
+                            <li>
+                                <input type="checkbox" id="cm_ott_all" name="ott" value="OTT: 전체" checked>
+                                <label for="cm_ott_all">전체</label>
+                            </li>
+                            <%
+                                ArrayList<Service> serviceList = new ServiceDAO().managedService();
+                                for(int i=0; i<serviceList.size(); i++){
+                            %>
+                            <li>
+                                <input type="checkbox" id="cm_ott_<%=serviceList.get(i).getService_name().toLowerCase()%>" name="ott" value="OTT: <%=serviceList.get(i).getService_name()%>">
+                                <label for="cm_ott_<%=serviceList.get(i).getService_name().toLowerCase()%>">
+                                    <%=serviceList.get(i).getService_name()%>
+                                </label>
+                            </li>
+                            <%
+                                }
+                            %>
+                        </ul>
+
+                        <ul>
+                            <h4>장르</h4>
+                            <hr>
+                            <li>
+                                <input type="checkbox" id="cm_genre_all" name="genre" value="장르: 전체" checked>
+                                <label for="cm_genre_all">전체</label>
+                            </li>
+                            <%
+                                ArrayList<Genre> genreList = new GenreDAO().selectGenre();
+                                for(int i=0; i<genreList.size(); i++){
+                            %>
+                            <li>
+                                <input type="checkbox" id="cm_genre_<%=genreList.get(i).getGenre_id()%>" name="genre" value="장르: <%=genreList.get(i).getGenre_name()%>">
+                                <label for="cm_genre_<%=genreList.get(i).getGenre_id()%>">
+                                    <%=genreList.get(i).getGenre_name()%>
+                                </label>
+                            </li>
+                            <%
+                                }
+                            %>
+                        </ul>
+
+                        <ul>
+                            <h4>매너 등급</h4>
+                            <hr>
+                            <li><input type="checkbox" id="cm_grade_all" name="grade" value="매너 등급: 전체" checked><label for="cm_grade_all">전체</label></li>
+                            <!-- 데이터베이스에 접근해서 만들것-->
+                            <li><input type="checkbox" id="cm_grade_bronze" name="grade" value="매너 등급: 브론즈"><label for="cm_grade_bronze">브론즈</label></li>
+                            <li><input type="checkbox" id="cm_grade_siver" name="grade" value="매너 등급: 실버"><label for="cm_grade_siver">실버</label></li>
+                            <li><input type="checkbox" id="cm_grade_gold" name="grade" value="매너 등급: 골드"><label for="cm_grade_gold">골드</label></li>
+                            <li><input type="checkbox" id="cm_grade_platinum" name="grade" value="매너 등급: 플레티넘"><label for="cm_grade_platinum">플레티넘</label></li>
+                            <li><input type="checkbox" id="cm_grade_diamond" name="grade" value="매너 등급: 다이아몬드"><label for="cm_grade_diamond">다이아몬드</label></li>
+                        </ul>
+
+                    </div> <!-- index-wrap 끝-->
+                </div> <!-- search-filter-index 끝-->
+
+            </div> <!-- search-field 끝-->
+
+            <div class="article">
+                <div class="article-lists">
+
+                    <%
+                        int skipIndex = 0;
+                        int countIndex = 6;
+                        ArrayList<Community_border> list = new Community_borderDAO().selectBorder(skipIndex, countIndex);
+                        for (int i=0; i<list.size(); i++){
+                            String[] member = new MemberDAO().memberPartyInfo(list.get(i).getCm_b_member());
+                            String[] service = new ServiceDAO().selectService(list.get(i).getCm_b_service());
+                    %>
+                    <div class="article-index">
+                        <div class="article-index-header">
+                            <div class="article-index-info">
+                                <h2><%=list.get(i).getCm_b_title()%></h2>
+                                <h4><%=list.get(i).getCm_b_subTitle()%></h4>
+                            </div>
+                            <div class="article-index-detail">
+                                <button class="detail-btn" id="detail-btn<%=i%>" type="button" value="0"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="article-index-content">
+                            <img src="<%=service[1]%>" alt="<%=service[0]%>">
+                            <p><%=list.get(i).getCm_b_content()%></p>
+                        </div>
+
+                        <div class="article-index-footer">
+                            <h4><%=member[0]%></h4>
+                            <label>
+                                <span>
+                                    <%
+                                        for(int j=0; j<5;j++){
+                                            if(j<list.get(i).getCm_b_star()){
+                                    %>
+                                                <i class="fas fa-star"></i>
+                                    <%
+                                            }else{
+                                    %>
+                                                <i class="far fa-star"></i>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </span>
+                                <span>
+                                    <span class="cm-a-good"><i class="fas fa-heart"></i> <%=list.get(i).getCm_b_likes()%></span>
+                                    <span class="cm-a-view"><i class="fas fa-eye"></i> <%=list.get(i).getCm_b_hits()%></span>
+                                </span>
+                            </label>
+                        </div>
+
+                    </div> <!-- article-index 끝-->
+                    <%
+                        }
+                    %>
+
+                </div> <!-- article-lists 끝-->
+            </div> <!-- article 끝-->
+            <%
+                if(session.getAttribute("member_id") != null){
+
+            %>
+                <div class="article-write">
+                    <button type="button" id="cm_write">글쓰기</button>
+                </div>
+            <%
+                }
+            %>
+
+
+            <div class="article-page">
+                <a href="" id="first-index"><div><span><i class="fas fa-angle-double-left"></i></span></div></a>
+                <a href="" id="prev"><div><span><i class="fas fa-angle-left"></i></span></div></a>
+                <a href=""><div><span>1</span></div></a>
+                <a href=""><div><span>2</span></div></a>
+                <a href=""><div><span>3</span></div></a>
+                <a href=""><div><span>4</span></div></a>
+                <a href=""><div><span>5</span></div></a>
+                <a href=""><div><span>6</span></div></a>
+                <a href=""><div><span>7</span></div></a>
+                <a href=""><div><span>8</span></div></a>
+                <a href=""><div><span>9</span></div></a>
+                <a href=""><div><span>10</span></div></a>
+                <a href="" id="next"><div><span><i class="fas fa-angle-right"></i></span></div></a>
+                <a href="" id="last-index"><div><span><i class="fas fa-angle-double-right"></i></span></div></a>
+            </div> <!-- article--page 끝-->
+
+        </div> <!-- main-wrap  끝-->
+    </div> <!-- community-main 끝-->
+    <div class="community-subIndex">
+        <div class="subIndex-today">
+            <ul>
+                <h2>일일 인기 글</h2>
+                <%
+                    ArrayList<Community_border> dailyList = new Community_borderDAO().dailyTopLikes(3);
+                    for(int i=0; i<3; i++){
+                        if(i < dailyList.size()){
+                            String[] member = new MemberDAO().memberPartyInfo(dailyList.get(i).getCm_b_member());
+                %>
+                            <a href=""><li>
+                                <h3><%=dailyList.get(i).getCm_b_title()%></h3>
+                                <h4><%=dailyList.get(i).getCm_b_subTitle()%></h4>
+                                <h5><%=member[0]%></h5>
+                            </li></a>
+                <%
+                        }else{
+                %>
+                            <li class="b_likes_null">
+                                <h4>작성된 글이 없어요</h4>
+                            </li>
+                <%
+                        }
+                    }
+                %>
+            </ul>
         </div>
-    </form>
-</div>
-<!--커뮤메인 끝-->
+
+        <div class="subIndex-week">
+            <ul>
+                <h2>주간 인기 글</h2>
+                <%
+                    ArrayList<Community_border> weeklyList = new Community_borderDAO().weeklyTopLikes(3);
+                    for(int i=0; i<3; i++) {
+                        if (i < weeklyList.size()) {
+                            String[] member = new MemberDAO().memberPartyInfo(weeklyList.get(i).getCm_b_member());
+                %>
+                            <a href=""><li>
+                                <h3><%=weeklyList.get(i).getCm_b_title()%></h3>
+                                <h4><%=weeklyList.get(i).getCm_b_subTitle()%></h4>
+                                <h5><%=member[0]%></h5>
+                            </li></a>
+                <%
+                        } else {
+                %>
+                            <li class="b_likes_null">
+                                <h4>작성된 글이 없어요</h4>
+                            </li>
+                <%
+                        }
+                    }
+                %>
+            </ul>
+        </div>
+
+        <div class="subIndex-month">
+            <ul>
+                <h2>월간 인기 글</h2>
+                <%
+                    ArrayList<Community_border> monthlyList = new Community_borderDAO().monthlyTopLikes(3);
+                    for(int i=0; i<3; i++) {
+                        if (i < monthlyList.size()) {
+                            String[] member = new MemberDAO().memberPartyInfo(monthlyList.get(i).getCm_b_member());
+                %>
+                <a href=""><li>
+                    <h3><%=monthlyList.get(i).getCm_b_title()%></h3>
+                    <h4><%=monthlyList.get(i).getCm_b_subTitle()%></h4>
+                    <h5><%=member[0]%></h5>
+                </li></a>
+                <%
+                } else {
+                %>
+                        <li class="b_likes_null">
+                            <h4>작성된 글이 없어요</h4>
+                        </li>
+                <%
+                        }
+                    }
+                %>
+            </ul>
+        </div>
+    </div><!--  community-subIndex 끝-->
+</div><!--  community-wrap 끝-->

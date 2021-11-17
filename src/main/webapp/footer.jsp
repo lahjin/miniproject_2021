@@ -23,6 +23,6 @@
             <span>TEL : 010-6436-4239 / FAX : 053-4849-1106</span>
             <span>주소 : 영진전문대학교 본관 400호</span>
         </div>
-        <h1 class="logo">Assemble Project</h1>
+        <h1 class="logo">MODIVA Project</h1>
     </div>
 </footer>

@@ -15,7 +15,7 @@
 
   <br>
   <div class="waybox">
-    <a href="./main.jsp" class="logo">Assemble</a>
+    <a href="./main.jsp" class="logo">MODIVA</a>
     <div class="circle"></div>
     <span class="maintext">비밀번호가 기억나지 않으신가요??</span>
     <span>이메일 인증을 통하여 비밀번호를 확인하세요</span>

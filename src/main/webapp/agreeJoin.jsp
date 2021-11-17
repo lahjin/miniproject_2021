@@ -8,14 +8,14 @@
 <!-- 전체틀을 관리해줄 큰 틀 -->
 <div class="box">
     <!-- 상단 텍스트 -->
-    <h1 style="margin-bottom: 20px;">Assemble</h1>
+    <h1 style="margin-bottom: 20px;">MODIVA</h1>
     <!-- 전체적인 내용 -->
     <form action="join.jsp" name="frm_agreeJoin" method="post">
         <!-- 첫번째 체크박스 -->
         <label class="checkbox" >
             <input type="checkbox" class="one" name="checkBox">
             <span class="icon"></span>
-            <span class="text" style="text-decoration:underline;">Assemble 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신 동<br>의에 모두 동의합니다.</span>
+            <span class="text" style="text-decoration:underline;">MODIVA 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신 동<br>의에 모두 동의합니다.</span>
         </label>
         <br><br>
 
@@ -23,7 +23,7 @@
         <label class="checkbox">
             <input type="checkbox" class="two" name="checkBox" onclick="clickbtn();">
             <span class="icon"></span>
-            <span class="text">Assemble 이용약관에 동의</span> <span style="color: green;">(필수)</span>
+            <span class="text">MODIVA 이용약관에 동의</span> <span style="color: green;">(필수)</span>
         </label>
 
         <br>
@@ -32,7 +32,7 @@
         <div class="text-introduce">
                <span style="margin: 10px 0px 0px 10px; display: inline-block;" >
                 <strong>여러분을 환영합니다.</strong> <br>
-                Assemble 서비스를 이용하시기 전 Assemble 서비스 회원으로 가입하실 경우 여러분은
+                MODIVA 서비스를 이용하시기 전 MODIVA 서비스 회원으로 가입하실 경우 여러분은
                 본 약관 및 관련 웅영 정책을 확인하거나 동의하게 되므로 잠시 시간을 내시어 주의 깊게
                 살펴봐 주시기 바랍니다
                 <br>
@@ -50,7 +50,7 @@
         <label class="checkbox">
             <input type="checkbox" class="three" name="checkBox" onclick="clickbtn();">
             <span class="icon"></span>
-            <span class="text">Assemble 개인정보 수집 및 이용 동의</span> <span style="color: green;">(필수)</span>
+            <span class="text">MODIVA 개인정보 수집 및 이용 동의</span> <span style="color: green;">(필수)</span>
         </label>
         <br>
         <div class="text-introduce">
@@ -77,7 +77,7 @@
         </label>
         <br>
         <span style="margin-top: 10px; margin-left: 60px; display: block; font-size: 12px; text-align: left; width: 460px;">
-                ASsemble에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화
+                MODIVA에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화
                 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나
                 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며,
                  이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.

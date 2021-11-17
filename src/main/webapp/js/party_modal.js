@@ -57,8 +57,6 @@ document.getElementById("party-enter").addEventListener('click', (e) =>{
         if(result.isConfirmed){
             let entry_party = document.getElementById('party_code').innerText;
             let entry_leader = document.getElementById('member_nickName1').innerText;
-            console.log(entry_party);
-            console.log(entry_leader);
             $.ajax({
                 type: 'post',
                 url: "EnterEntry",

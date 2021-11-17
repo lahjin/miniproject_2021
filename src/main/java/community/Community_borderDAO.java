@@ -27,7 +27,7 @@ public class Community_borderDAO {
             pstmt.setInt(2, countIndex);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Community_border(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                list.add(new Community_border(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),
                         rs.getString(13),rs.getString(14)));
@@ -84,7 +84,7 @@ public class Community_borderDAO {
             pstmt.setInt(1, countIndex);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Community_border(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                list.add(new Community_border(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),
                         rs.getString(13),rs.getString(14)));
@@ -103,6 +103,7 @@ public class Community_borderDAO {
         }
         return list;
     }
+
     //주간 작성된 글 중 좋아요를 많이 받은글
     public ArrayList<Community_border> weeklyTopLikes(int countIndex){
         ArrayList<Community_border> list = new ArrayList<>();
@@ -116,7 +117,7 @@ public class Community_borderDAO {
             pstmt.setInt(1, countIndex);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Community_border(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                list.add(new Community_border(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),
                         rs.getString(13),rs.getString(14)));
@@ -135,6 +136,7 @@ public class Community_borderDAO {
         }
         return list;
     }
+
     //월간 작성된 글 중 좋아요를 많이 받은글
     public ArrayList<Community_border> monthlyTopLikes(int countIndex){
         ArrayList<Community_border> list = new ArrayList<>();
@@ -147,7 +149,7 @@ public class Community_borderDAO {
             pstmt.setInt(1, countIndex);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Community_border(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                list.add(new Community_border(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),
                         rs.getString(13),rs.getString(14)));
@@ -165,5 +167,37 @@ public class Community_borderDAO {
             }
         }
         return list;
+    }
+
+    //커뮤니티 글작성 메소드
+    public int borderWrite(Community_border cm_b){
+        int result = 0;
+        String sql = "INSERT INTO miniproject.community_border (cm_b_member, cm_b_service, cm_b_title, cm_b_subTitle, " +
+                "cm_b_genre1, cm_b_genre2, cm_b_content, cm_b_star) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,cm_b.getCm_b_member());
+            pstmt.setString(2,cm_b.getCm_b_service());
+            pstmt.setString(3,cm_b.getCm_b_title());
+            pstmt.setString(4,cm_b.getCm_b_subTitle());
+            pstmt.setString(5,cm_b.getCm_b_genre1());
+            pstmt.setString(6,cm_b.getCm_b_genre2());
+            pstmt.setString(7,cm_b.getCm_b_content());
+            pstmt.setInt(8,cm_b.getCm_b_star());
+            result =  pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
     }
 }

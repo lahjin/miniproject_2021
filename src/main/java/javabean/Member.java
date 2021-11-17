@@ -21,6 +21,7 @@ public class Member {
     private String member_personal; //회원개인정보수집
     private String member_promotion;//회원프로모션수신
     private String member_log;      //회원로그인기록
+    private int member_period;   //회원파티이용기간
 
     public String getMember_code() {
         return member_code;
@@ -166,4 +167,11 @@ public class Member {
         this.member_log = member_log;
     }
 
+    public int getMember_period() {
+        return member_period;
+    }
+
+    public void setMember_period(int member_period) {
+        this.member_period = member_period;
+    }
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/communityContents.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="css/Animate.css">
 
 </head>
 <body>
@@ -21,6 +22,8 @@
     <jsp:include page="footer.jsp"/>
 
     <script src="js/jquery-3.6.0.min.js" defer></script>
+    <script src="js/sweetalert.js"></script>
+    <script src="js/swalPreset.js"></script>
     <script src="js/communityContents.js" defer></script>
     <script src="js/community-border-modal.js" defer></script>
     <script src="js/community-write-modal.js" defer></script>

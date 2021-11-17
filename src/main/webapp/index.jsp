@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
   <head>
-    <title>Assamble Project</title>
+    <title>MODIVA Project</title>
     <%-- 인텔리제이 에디터 css/js 안먹힐때 대비용 코드
          ${pageContext.request.contextPath}
     --%>

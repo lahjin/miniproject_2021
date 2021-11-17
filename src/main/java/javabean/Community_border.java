@@ -1,7 +1,7 @@
 package javabean;
 
 public class Community_border {
-    String cm_b_code;       //작성글코드
+    int cm_b_code;       //작성글코드
     String cm_b_member;     //작성자
     String cm_b_service;    //시청OTT
     String cm_b_title;      //글제목
@@ -16,7 +16,7 @@ public class Community_border {
     String cm_b_date;       //작성일
     String cm_b_state;      //작성글상태
 
-    public Community_border(String cm_b_code, String cm_b_member, String cm_b_service, String cm_b_title, String cm_b_subTitle, String cm_b_genre1, String cm_b_genre2, String cm_b_content, int cm_b_star, int cm_b_hits, int cm_b_likes, int cm_b_dislikes, String cm_b_date, String cm_b_state) {
+    public Community_border(int cm_b_code, String cm_b_member, String cm_b_service, String cm_b_title, String cm_b_subTitle, String cm_b_genre1, String cm_b_genre2, String cm_b_content, int cm_b_star, int cm_b_hits, int cm_b_likes, int cm_b_dislikes, String cm_b_date, String cm_b_state) {
         this.cm_b_code = cm_b_code;
         this.cm_b_member = cm_b_member;
         this.cm_b_service = cm_b_service;
@@ -33,11 +33,22 @@ public class Community_border {
         this.cm_b_state = cm_b_state;
     }
 
-    public String getCm_b_code() {
+    public Community_border(String cm_b_member, String cm_b_service, String cm_b_title, String cm_b_subTitle, String cm_b_genre1, String cm_b_genre2, String cm_b_content, int cm_b_star) {
+        this.cm_b_member = cm_b_member;
+        this.cm_b_service = cm_b_service;
+        this.cm_b_title = cm_b_title;
+        this.cm_b_subTitle = cm_b_subTitle;
+        this.cm_b_genre1 = cm_b_genre1;
+        this.cm_b_genre2 = cm_b_genre2;
+        this.cm_b_content = cm_b_content;
+        this.cm_b_star = cm_b_star;
+    }
+
+    public int getCm_b_code() {
         return cm_b_code;
     }
 
-    public void setCm_b_code(String cm_b_code) {
+    public void setCm_b_code(int cm_b_code) {
         this.cm_b_code = cm_b_code;
     }
 

@@ -17,7 +17,7 @@
     <!-- 첫번째 박스 -->
     <div class="box">
         <div class="singin_card">
-            <a href="./main.jsp"> Assemble Project</a>
+            <a href="./main.jsp"> MODIVA Project</a>
             <hr style="background-color: #ddd;">
             <form action="loginAction.jsp" name="frm_login" method="post">
                 <input id="member_id" name="member_id" type="text" placeholder="아이디를 입력하세요.">

@@ -13,7 +13,7 @@
                     <li><a href="login.jsp">Login</a></li>
                     <li><a href="agreeJoin.jsp">Sign in</a></li>
                     <% } else{ %>
-                    <li><a href="#">Mypage</a></li>
+                    <li><a href="mypage.jsp">Mypage</a></li>
                     <li><a href="logoutAction.jsp">Logout</a></li>
                     <% } %>
                 </ul>

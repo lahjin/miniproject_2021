@@ -128,4 +128,32 @@ public class ServiceDAO extends MysqlMgr{
 
         return fee;
     }
+
+    //서비스코드로 서비스이름을 리턴하는 메소드
+    public String codeToName(String service_code){
+        String name = null;
+        String sql = "SELECT service_name FROM service WHERE service_code = ?";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, service_code);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                name = rs.getString("service_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return name;
+    }
 }

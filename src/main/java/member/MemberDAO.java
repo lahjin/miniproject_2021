@@ -2,13 +2,12 @@ package member;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import DB.ConnectDB;
 import DB.MysqlMgr;
-import generator.DateGenerator;
 import javabean.Member;
 
 //member(회원) 테이블과 SQL하는 클래스
@@ -246,7 +245,69 @@ public class MemberDAO{
         }
         return value;
     }
-    
+
+    //회원아이디로 전체 결과를 담는 메소드
+    public ArrayList<Object> myInfo(String member_id){
+        ArrayList<Object> list = new ArrayList<>();
+        String sql = "SELECT * FROM member WHERE member_id = ?";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,member_id);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                ResultSetMetaData rsmd = rs.getMetaData();
+                for(int i=0; i< rsmd.getColumnCount(); i++){
+                    list.add(rs.getObject(i+1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    //선호 OTT를 가져오는 메소드
+    public String[] favoriteOTT(String member_code){
+        String[] ott = new String[2];
+        String sql = "SELECT p.party_service, COUNT(*) FROM party as p, entry as e " +
+                "WHERE p.party_code = e.entry_party AND  e.entry_state = '가입' AND e.entry_member = ? " +
+                "GROUP BY p.party_service " +
+                "ORDER BY COUNT(*) DESC LIMIT 1";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,member_code);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                ott[0] = rs.getString(1);
+                ott[1] = rs.getString(2);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return ott;
+    }
+
+
     //아래부턴 임시영역
     //임시 관리자 계정 만들기 메소드
     public int makeAdmin() {

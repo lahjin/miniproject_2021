@@ -204,4 +204,34 @@ public class PartyDAO {
             }
         }
     }
+
+    //내가 가입한 파티를 파티상태로 구분하여 파티코드만 리턴해주는 메소드
+    public ArrayList<String> usedPartyList(String member_code, String party_state){
+        ArrayList<String> list = new ArrayList<>();
+
+        String sql = "SELECT p.party_code FROM party as p, entry as e " +
+                "WHERE p.party_code = e.entry_party AND e.entry_state = '가입' " +
+                "AND e.entry_member = ? AND p.party_state = ?";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, member_code);
+            pstmt.setString(2, party_state);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                list.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return list;
+    }
 }

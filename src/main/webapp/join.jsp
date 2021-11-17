@@ -31,7 +31,7 @@
             <form name="join_frm" method="post" accept-charset="UTF-8">
                 <!-- 제목 a태그 -->
                 <div class="area">
-                    <a href="main.jsp" class="mainlogo">Assemble</a>
+                    <a href="main.jsp" class="mainlogo">MODIVA</a>
                 </div>
 
                 <!-- 아이디 입력 div -->

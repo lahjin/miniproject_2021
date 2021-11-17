@@ -25,7 +25,7 @@ function maxCountCalc(){
         data: {service_code: service_code},
         async: false,
         success: function (data) {
-            pageMaxIndex = data%countIndex;
+            pageMaxIndex = data/countIndex;
         }
     })
 }

@@ -79,7 +79,7 @@ function maxIndexCount() {
         async: false,
         success: function (data) {
             for (let key in data) {
-                pageMaxIndex = data%6;
+                pageMaxIndex = data/6;
             }
         }
     })

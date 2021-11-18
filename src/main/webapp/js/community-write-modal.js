@@ -1,10 +1,13 @@
 let star = 0;
 
 //글쓰기 버튼을 눌렀을때(모달 켜짐)
-document.getElementById("cm_write").addEventListener("click", function (){
-    document.querySelector('.community-write-modal').style.display = "flex";
-    document.body.style.overflow = 'hidden';
-})
+let writeBtn = document.getElementById("cm_write");
+if(writeBtn != null){
+    writeBtn.addEventListener("click", function (){
+        document.querySelector('.community-write-modal').style.display = "flex";
+        document.body.style.overflow = 'hidden';
+    })
+}
 
 //별에 마우스를 올릴때 이벤트 리스너
 let starIcon = document.querySelectorAll(".star > i");

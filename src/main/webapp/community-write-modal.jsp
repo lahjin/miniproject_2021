@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="star_rating">
-                    <input type="radio" id="1-star" name="cm_b_star" value="1" />
+                    <input type="radio" id="1-star" name="cm_b_star" value="1" checked/>
                     <label for="1-star" class="star"><i class="fas fa-star"></i></label>
                     <input type="radio" id="2-star" name="cm_b_star" value="2" />
                     <label for="2-star" class="star"><i class="far fa-star"></i></label>

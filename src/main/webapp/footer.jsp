@@ -19,7 +19,7 @@
 
         <div class="info">
             <span>사업자등록번호 202-81-21515</span>
-            <span>(주)어셈블 코리아 대표 : 7조</span>
+            <span>(주)모디바 코리아 대표 : 7조</span>
             <span>TEL : 010-6436-4239 / FAX : 053-4849-1106</span>
             <span>주소 : 영진전문대학교 본관 400호</span>
         </div>

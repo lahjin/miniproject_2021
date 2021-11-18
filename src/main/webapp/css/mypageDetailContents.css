@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.detail-parents {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+
+.detail-parents > .sidebar {
+    width: 250px;
+    background-color:  royalblue;
+    color: white;
+}
+
+.detail-parents > .sidebar > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.detail-parents > .sidebar hr {
+    margin: auto;
+    width: 75%;
+}
+
+/* 유저에 대한 정보 */
+.userinfo {
+    width: 250px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.bigul {
+    margin: 10px 0px 10px 0px;
+    text-align: left;
+    width: 150px;
+    list-style: none;
+}
+
+.bigul a {
+    color: white;
+    text-decoration: none;
+}
+
+ul > .main-topic {
+    font-weight: 600;
+    font-size: 20px;
+}
+ul > .small-topic {
+    width: 100%;
+    list-style: none;
+    margin-left: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* 사이드바 끝 */
+
+.detail-parents > .contents-box {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 현재 사용중인 파티 영역 */
+.detail-parents > .contents-box > .now-party {
+    width: 100%;
+    height: auto;
+}
+/* now-party안에 contents박스 */
+.contents-area {
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 85%;
+    height: auto;
+}
+/* hr선 */
+.contents-area > hr {
+    margin-top: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+/* 아래 파티영역 */
+.contents-area > .party-area {
+    width: 100%;
+    height: auto;
+    margin-left: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.contents-area > .party-area > .party {
+    width: 220px;
+    height: 250px;
+    border-radius: 10px;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* innerbox 호버시 나오는 영역 */
+.contents-area > .party-area > .party > .innerbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: black;
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+    text-align: center;
+}
+
+.contents-area > .party-area > .party > .innerbox > h3 {
+    padding: 10px;
+}
+
+.contents-area > .party-area > .party > .innerbox > h4 {
+    padding: 10px;
+}
+
+.contents-area > .party-area > .party > .innerbox > .user {
+    display: flex;
+    width: 180px;
+    height: 100px;
+    margin: 0 auto;
+    border: 1px solid white;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.contents-area > .party-area > .party > .innerbox > .user > h5 {
+    margin-left: 20px;
+    font-size: 15px;
+    height: 20px;
+    padding-top: 15px;
+}
+.contents-area > .party-area > .party > .innerbox > input {
+    width: 50%;
+    height: 30px;
+    margin-top: 10px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.contents-area > .party-area > .party > .innerbox:hover {
+    opacity: 0.85;
+}
+
+/* inner박스 끝 */
+
+/* 공통영역 */
+.contents-area > .party-area > .netflix {
+    background-image: url("../asset/service/Netflix.svg");
+    background-color: black;
+}
+
+.contents-area > .party-area > .watcha {
+    background-image: url("../asset/service/Watcha.svg");
+    background-color: lightpink;
+}
+
+.contents-area > .party-area > .wavve {
+    background-image: url("../asset/service/Wavve.svg");
+    background-color: skyblue;
+}
+
+.contents-area > .party-area > .millie {
+    background-image: url("../asset/Millie.png");
+    background-color: yellow;
+}
+
+.contents-area > .party-area > .nob {
+    -webkit-filter: grayscale(100%);
+    background-color: gray;
+    text-align: center;
+}
+
+/* 공통영역 끝 */
+
+/* 신청중인 파티 */
+.apply-party {
+    width: 100%;
+    height: auto;
+}
+
+.apply-party > .contents-area > .party-area > .party {
+    width: 220px;
+    height: 250px;
+    border-radius: 10px;
+    background-size: 50%;
+    background-position: center;
+    -webkit-filter: grayscale(30%);
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* 신청중인 파티 영역 끝  */
+
+.past-party {
+    width: 100%;
+    height: 800px;
+}
+
+.past-party > .contents-area > .party-area > .party {
+    width: 220px;
+    height: 250px;
+    border-radius: 10px;
+    background-size: 50%;
+    background-position: center;
+    background-color: lightpink;
+    -webkit-filter: grayscale(100%);
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: 10px;
+}

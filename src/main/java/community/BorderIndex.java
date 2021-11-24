@@ -28,24 +28,8 @@ public class BorderIndex extends HttpServlet {
         JSONArray jsonArray = new JSONArray();
 
         for (int i=0; i<list.size(); i++){
-            String[] member = new MemberDAO().memberPartyInfo(list.get(i).getCm_b_member());
-            String[] service = new ServiceDAO().selectService(list.get(i).getCm_b_service());
             jsonObject = new JSONObject();
             jsonObject.put("cm_b_code",list.get(i).getCm_b_code());
-            jsonObject.put("cm_b_nickname",member[0]);
-            jsonObject.put("cm_b_grade", member[1]);
-            jsonObject.put("cm_b_service",service[0]);
-            jsonObject.put("cm_b_service_img",service[1]);
-            jsonObject.put("cm_b_title",list.get(i).getCm_b_title());
-            jsonObject.put("cm_b_subTitle",list.get(i).getCm_b_subTitle());
-            jsonObject.put("cm_b_genre1",list.get(i).getCm_b_genre1());
-            jsonObject.put("cm_b_genre2",list.get(i).getCm_b_genre2());
-            jsonObject.put("cm_b_content",list.get(i).getCm_b_content());
-            jsonObject.put("cm_b_star",list.get(i).getCm_b_star());
-            jsonObject.put("cm_b_hits",list.get(i).getCm_b_hits());
-            jsonObject.put("cm_b_likes",list.get(i).getCm_b_likes());
-            jsonObject.put("cm_b_dislikes",list.get(i).getCm_b_dislikes());
-            jsonObject.put("cm_b_date",list.get(i).getCm_b_date());
             jsonArray.add(jsonObject);
         }
 

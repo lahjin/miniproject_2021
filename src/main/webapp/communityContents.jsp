@@ -5,6 +5,25 @@
 <%@ page import="genre.GenreDAO" %>
 <%@ page import="javabean.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%
+    String currentParam = request.getParameter("pageIndex"); //현재 파라미터 저장
+    int currentPage; //현재페이지번호
+    if(currentParam == null){
+        currentPage = 1;
+    }else{
+        currentPage = Integer.parseInt(currentParam);
+    }
+    int rowSize = 6; //한 페이지에 보여줄 글 갯수
+    int rowCount = new Community_borderDAO().upTimeBorderCount(); //DB에 저장된 총 글 갯수
+    int startRow = (currentPage-1) * rowSize; //db 조회시 처음 레코드 번호
+//    int endRow = currentPage * rowSize; //db 조회시 끝 레코드 번호(MySQL LIMIT 구문을 사용하기 때문에 필요없는 변수)
+
+    int pageCount = (int) Math.ceil(rowCount /(double) rowSize); // 총 페이지 갯수
+    int pageSize = 10; //한 페이지에 보여줄 페이지 갯수
+    int startPage = ((currentPage-1)/pageSize) * pageSize + 1; //한 페이지의 처음 페이지 번호
+    int endPage = startPage + pageSize - 1; //한 페이지의 마지막 페이지 번호
+
+%>
 <div class="community-wrap">
 
     <div class="community-menu">
@@ -49,104 +68,13 @@
                     <div class="search-filter"><i class="fas fa-filter"></i></div>
                 </div> <!-- searchBar 끝-->
 
-                <div class="search-filter-log">
-
-                </div> <!-- search-filter-log 끝-->
-
-                <div class="search-filter-index">
-                    <h3>필터</h3>
-                    <div class="index-wrap">
-                        <ul>
-                            <h4>기본</h4>
-                            <hr>
-                            <li><input type="checkbox" id="cm_nickname" value="작성자" checked><label for="cm_nickname">작성자</label></li>
-                            <li><input type="checkbox" id="cm_title" value="작품명" checked><label for="cm_title">작품명</label></li>
-                            <li><input type="checkbox" id="cm_article" value="내용"><label for="cm_article">내용</label></li>
-                        </ul>
-
-                        <ul>
-                            <h4>기간</h4>
-                            <hr>
-                            <li><input type="checkbox" id="cm_total" name="period" value="기간: 전체" checked><label for="cm_total">전체</label></li>
-                            <li><input type="checkbox" id="cm_today" name="period" value="기간: 오늘"><label for="cm_today">오늘</label></li>
-                            <li><input type="checkbox" id="cm_week" name="period" value="기간: 이번주"><label for="cm_week">이번주</label></li>
-                            <li><input type="checkbox" id="cm_month" name="period" value="기간: 이번달"><label for="cm_month">이번달</label>
-                            </li>
-                            <li><input type="checkbox" id="cm_3month" name="period" value="기간: 3개월"><label for="cm_3month">3개월</label>
-                            </li>
-                            <li><input type="checkbox" id="cm_6month" name="period" value="기간: 6개월"><label for="cm_6month">6개월</label>
-                            </li>
-                            <li><input type="checkbox" id="cm_year" name="period" value="기간: 1년"><label for="cm_year">1년</label></li>
-                        </ul>
-
-                        <ul>
-                            <h4>OTT</h4>
-                            <hr>
-                            <li>
-                                <input type="checkbox" id="cm_ott_all" name="ott" value="OTT: 전체" checked>
-                                <label for="cm_ott_all">전체</label>
-                            </li>
-                            <%
-                                ArrayList<Service> serviceList = new ServiceDAO().managedService();
-                                for(int i=0; i<serviceList.size(); i++){
-                            %>
-                            <li>
-                                <input type="checkbox" id="cm_ott_<%=serviceList.get(i).getService_name().toLowerCase()%>" name="ott" value="OTT: <%=serviceList.get(i).getService_name()%>">
-                                <label for="cm_ott_<%=serviceList.get(i).getService_name().toLowerCase()%>">
-                                    <%=serviceList.get(i).getService_name()%>
-                                </label>
-                            </li>
-                            <%
-                                }
-                            %>
-                        </ul>
-
-                        <ul>
-                            <h4>장르</h4>
-                            <hr>
-                            <li>
-                                <input type="checkbox" id="cm_genre_all" name="genre" value="장르: 전체" checked>
-                                <label for="cm_genre_all">전체</label>
-                            </li>
-                            <%
-                                ArrayList<Genre> genreList = new GenreDAO().selectGenre();
-                                for(int i=0; i<genreList.size(); i++){
-                            %>
-                            <li>
-                                <input type="checkbox" id="cm_genre_<%=genreList.get(i).getGenre_id()%>" name="genre" value="장르: <%=genreList.get(i).getGenre_name()%>">
-                                <label for="cm_genre_<%=genreList.get(i).getGenre_id()%>">
-                                    <%=genreList.get(i).getGenre_name()%>
-                                </label>
-                            </li>
-                            <%
-                                }
-                            %>
-                        </ul>
-
-                        <ul>
-                            <h4>매너 등급</h4>
-                            <hr>
-                            <li><input type="checkbox" id="cm_grade_all" name="grade" value="매너 등급: 전체" checked><label for="cm_grade_all">전체</label></li>
-                            <!-- 데이터베이스에 접근해서 만들것-->
-                            <li><input type="checkbox" id="cm_grade_bronze" name="grade" value="매너 등급: 브론즈"><label for="cm_grade_bronze">브론즈</label></li>
-                            <li><input type="checkbox" id="cm_grade_siver" name="grade" value="매너 등급: 실버"><label for="cm_grade_siver">실버</label></li>
-                            <li><input type="checkbox" id="cm_grade_gold" name="grade" value="매너 등급: 골드"><label for="cm_grade_gold">골드</label></li>
-                            <li><input type="checkbox" id="cm_grade_platinum" name="grade" value="매너 등급: 플레티넘"><label for="cm_grade_platinum">플레티넘</label></li>
-                            <li><input type="checkbox" id="cm_grade_diamond" name="grade" value="매너 등급: 다이아몬드"><label for="cm_grade_diamond">다이아몬드</label></li>
-                        </ul>
-
-                    </div> <!-- index-wrap 끝-->
-                </div> <!-- search-filter-index 끝-->
-
             </div> <!-- search-field 끝-->
 
             <div class="article">
                 <div class="article-lists">
 
                     <%
-                        int skipIndex = 0;
-                        int countIndex = 6;
-                        ArrayList<Community_border> list = new Community_borderDAO().selectBorder(skipIndex, countIndex);
+                        ArrayList<Community_border> list = new Community_borderDAO().selectBorder(startRow, rowSize);
                         for (int i=0; i<list.size(); i++){
                             String[] member = new MemberDAO().memberPartyInfo(list.get(i).getCm_b_member());
                             String[] service = new ServiceDAO().selectService(list.get(i).getCm_b_service());
@@ -158,7 +86,7 @@
                                 <h4><%=list.get(i).getCm_b_subTitle()%></h4>
                             </div>
                             <div class="article-index-detail">
-                                <button class="detail-btn" id="detail-btn<%=i%>" type="button" value="0"><i class="fas fa-plus"></i></button>
+                                <button class="detail-btn" id="detail-btn<%=i%>" type="button"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
 
@@ -212,20 +140,41 @@
 
 
             <div class="article-page">
-                <a href="" id="first-index"><div><span><i class="fas fa-angle-double-left"></i></span></div></a>
-                <a href="" id="prev"><div><span><i class="fas fa-angle-left"></i></span></div></a>
-                <a href=""><div><span>1</span></div></a>
-                <a href=""><div><span>2</span></div></a>
-                <a href=""><div><span>3</span></div></a>
-                <a href=""><div><span>4</span></div></a>
-                <a href=""><div><span>5</span></div></a>
-                <a href=""><div><span>6</span></div></a>
-                <a href=""><div><span>7</span></div></a>
-                <a href=""><div><span>8</span></div></a>
-                <a href=""><div><span>9</span></div></a>
-                <a href=""><div><span>10</span></div></a>
-                <a href="" id="next"><div><span><i class="fas fa-angle-right"></i></span></div></a>
-                <a href="" id="last-index"><div><span><i class="fas fa-angle-double-right"></i></span></div></a>
+                <%
+                    if(currentPage > 1){
+                %>
+                        <a href="community.jsp?pageIndex=1" id="first-index"><div><span><i class="fas fa-angle-double-left"></i></span></div></a>
+                <%
+                    }if(currentPage > 10){
+                %>
+                        <a href="community.jsp?pageIndex=<%=currentPage-10%>" id="prev"><div><span><i class="fas fa-angle-left"></i></span></div></a>
+                <%
+                    }
+                %>
+                <%
+                    for(int i=startPage; i<=endPage; i++){
+                        if(i <= pageCount){
+                %>
+                            <a id="pageIndex<%=i%>" href="community.jsp?pageIndex=<%=i%>"><div><span><%=i%></span></div></a>
+                <%
+                        }
+                    }
+                %>
+                <%
+                    if(currentPage < pageCount-10){
+                %>
+                        <a href="community.jsp?pageIndex=<%=currentPage+1%>" id="next"><div><span><i class="fas fa-angle-right"></i></span></div></a>
+                <%
+                    }
+                %>
+                <%
+                    if(currentPage < pageCount){
+                %>
+                        <a href="community.jsp?pageIndex=<%=pageCount%>" id="last-index"><div><span><i class="fas fa-angle-double-right"></i></span></div></a>
+                <%
+                    }
+                %>
+
             </div> <!-- article--page 끝-->
 
         </div> <!-- main-wrap  끝-->
@@ -313,3 +262,4 @@
         </div>
     </div><!--  community-subIndex 끝-->
 </div><!--  community-wrap 끝-->
+<div id="hidden-modal"></div>

@@ -51,7 +51,7 @@
         %>
 
         <!-- 임시로 만든 자리 관리자 계정 생성 배포시에는 없애야댐 -->
-        <div id="temp_make_admin">
+        <div id="temp_make_admin" style="display: none">
             <form action="./temp/temp_makeAdmin.jsp" name="admin_frm" method="post">
                 <button type="submit" style="width: 500px; height: 100px;">
                     <p><b style="font-size: 2em">추후에 배포시에 이 버튼은 삭제</b></p>

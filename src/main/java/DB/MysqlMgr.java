@@ -32,9 +32,7 @@ public class MysqlMgr extends ConnectDB {
     void ConnectionDBMgr() {
         try {
             Class.forName(driver);
-            System.out.println("Mysql 드라이버 적재 성공");
             setConn(DriverManager.getConnection(url + database + version8, id, pwd));
-            System.out.println("Mysql: " + database + " 데이터베이스 연결 성공");
             //최초 실행시 false이므로 !가 붙어서 실행댐
 //            if (!isWebIsRunning()){
 //                CreateTableMgr(); //table 생성 메소드

@@ -2,7 +2,7 @@ package javabean;
 
 public class Community_dislikes {
     int cm_dis_code;          //싫어요코드
-    String cm_dis_border;     //싫어요한 글
+    int cm_dis_border;     //싫어요한 글
     String cm_dis_member;     //싫어요한 회원
     String cm_dis_date;       //싫어요한 날짜
     int cm_dis_state;         //싫어요 상태
@@ -15,11 +15,11 @@ public class Community_dislikes {
         this.cm_dis_code = cm_dis_code;
     }
 
-    public String getCm_dis_border() {
+    public int getCm_dis_border() {
         return cm_dis_border;
     }
 
-    public void setCm_dis_border(String cm_dis_border) {
+    public void setCm_dis_border(int cm_dis_border) {
         this.cm_dis_border = cm_dis_border;
     }
 

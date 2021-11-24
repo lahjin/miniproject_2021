@@ -6,6 +6,7 @@ import javabean.Community_border;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -199,5 +200,135 @@ public class Community_borderDAO {
             }
         }
         return result;
+    }
+
+    //커뮤니티 작성글코드로 검색
+    public ArrayList<Object> codeToBorder(int cm_b_code){
+        ArrayList<Object> list = new ArrayList<>();
+        String sql = "SELECT * FROM community_border WHERE cm_b_code = ?";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,cm_b_code);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                ResultSetMetaData rsmd = rs.getMetaData();
+                for(int i=0; i< rsmd.getColumnCount(); i++){
+                    list.add(rs.getObject(i+1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return list;
+    }
+
+    //조회수 변경 메소드
+    public int updateHits(int cm_b_code, int cm_b_hits){
+        int result = -1;
+        String sql = "UPDATE community_border SET cm_b_hits = ? WHERE (cm_b_code = ?)";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,cm_b_hits);
+            pstmt.setInt(2, cm_b_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+
+        return result;
+    }
+
+    //좋아요수 변경 메소드
+    public int updateLikes(int cm_b_code, int cm_b_likes){
+        int result = -1;
+        String sql = "UPDATE community_border SET cm_b_likes = ? WHERE (cm_b_code = ?)";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,cm_b_likes);
+            pstmt.setInt(2, cm_b_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+
+        return result;
+    }
+
+    //싫어요수 변경 메소드
+    public int updateDislikes(int cm_b_code, int cm_b_dislikes){
+        int result = -1;
+        String sql = "UPDATE community_border SET cm_b_dislikes = ? WHERE (cm_b_code = ?)";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,cm_b_dislikes);
+            pstmt.setInt(2, cm_b_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+
+        return result;
+    }
+
+    //작성글코드로 작성자 검색
+    public String codeToMember(int cm_b_code){
+        String member = null;
+        String sql = "SELECT cm_b_member FROM community_border WHERE cm_b_code = ?";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,cm_b_code);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                member = rs.getString("cm_b_member");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return member;
     }
 }

@@ -34,15 +34,6 @@ public class BorderWrite extends HttpServlet {
 
         cm_b_member = new MemberDAO().nickNameToCode(cm_b_member);
 
-        System.out.println(cm_b_member);
-        System.out.println(cm_b_service);
-        System.out.println(cm_b_title);
-        System.out.println(cm_b_subTitle);
-        System.out.println(cm_b_genre1);
-        System.out.println(cm_b_genre2);
-        System.out.println(cm_b_content);
-        System.out.println(cm_b_star);
-
         Community_border cm_b = new Community_border(cm_b_member,cm_b_service,cm_b_title,cm_b_subTitle,cm_b_genre1,cm_b_genre2,cm_b_content,cm_b_star);
 
         int result = new Community_borderDAO().borderWrite(cm_b);

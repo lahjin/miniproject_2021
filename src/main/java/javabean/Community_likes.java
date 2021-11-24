@@ -2,7 +2,7 @@ package javabean;
 
 public class Community_likes {
     int cm_li_code;          //좋아요코드
-    String cm_li_border;     //좋아요한 글
+    int cm_li_border;     //좋아요한 글
     String cm_li_member;     //좋아요한 회원
     String cm_li_date;       //좋아요한 날짜
     int cm_li_state;         //좋아요 상태
@@ -15,11 +15,11 @@ public class Community_likes {
         this.cm_li_code = cm_li_code;
     }
 
-    public String getCm_li_border() {
+    public int getCm_li_border() {
         return cm_li_border;
     }
 
-    public void setCm_li_border(String cm_li_border) {
+    public void setCm_li_border(int cm_li_border) {
         this.cm_li_border = cm_li_border;
     }
 

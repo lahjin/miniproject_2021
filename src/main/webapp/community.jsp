@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <jsp:include page="community-border-modal.jsp"/>
+<%--    <jsp:include page="community-border-modal.jsp"/>--%>
     <jsp:include page="community-write-modal.jsp"/>
 
     <jsp:include page="header.jsp"/>

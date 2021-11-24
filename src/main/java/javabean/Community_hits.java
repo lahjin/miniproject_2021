@@ -2,7 +2,7 @@ package javabean;
 
 public class Community_hits {
     int cm_h_code;          //조회코드
-    String cm_h_border;     //조회한 글
+    int cm_h_border;     //조회한 글
     String cm_h_member;     //조회한 회원
     String cm_h_date;       //조회한 날짜
 
@@ -14,11 +14,11 @@ public class Community_hits {
         this.cm_h_code = cm_h_code;
     }
 
-    public String getCm_h_border() {
+    public int getCm_h_border() {
         return cm_h_border;
     }
 
-    public void setCm_h_border(String cm_h_border) {
+    public void setCm_h_border(int cm_h_border) {
         this.cm_h_border = cm_h_border;
     }
 

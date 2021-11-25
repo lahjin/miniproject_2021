@@ -104,9 +104,12 @@
 .search-field {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 700px;
     height: auto;
+}
+
+.radio-bar{
+    font-weight: 600;
 }
 
 .search-field > div {

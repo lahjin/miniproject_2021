@@ -60,8 +60,16 @@
 
     <div class="community-main">
         <div class="main-wrap">
+            <form action="" method="post">
             <div class="search-field">
-
+                <div class="radio-bar">
+                    <input type="radio" id="search_title" name="search-radio" value="제목" checked><label
+                        for="search_title">제목</label>
+                    <input type="radio" id="search_subTitle" name="search-radio" value="작품명" ><label
+                        for="search_subTitle">작품명</label>
+                    <input type="radio" id="search_nickname" name="search-radio" value="닉네임" ><label
+                        for="search_nickname">닉네임</label>
+                </div>
                 <div class="searchBar">
                     <div class="search-icon"><i class="fas fa-search"></i></div>
                     <input type="text" placeholder="Search in community....." />
@@ -69,7 +77,7 @@
                 </div> <!-- searchBar 끝-->
 
             </div> <!-- search-field 끝-->
-
+            </form>
             <div class="article">
                 <div class="article-lists">
 

@@ -15,7 +15,7 @@ function borderModalOn(pageNo) {
     modal__events();
     document.body.style.overflow = 'hidden';
 }
-let dd;
+
 //클릭이벤트
 function modal__events() {
     let notLogIn = document.querySelectorAll('.session_null');
@@ -43,21 +43,36 @@ function modal__events() {
                         data: {cm_b_code: cm_b_code, member_id: member_id},
                         success: function (data){
                             let result = data;
+                            let icon, title, text;
                             if(result.state == "self"){
-                                alert('self');
+                                icon = 'warning';
+                                title = '경고';
+                                text = '본인글에는 좋아요를 누를 수 없습니다!'
+                                swalPreset(icon,title,text);
                             } else if(result.state == "fail"){
-                                alert('fail');
+                                icon = 'error';
+                                title = '오류';
+                                text = '좋아요를 실패했습니다!'
+                                swalPreset(icon,title,text);
                             }else if(result.state == "internetError"){
-                                alert('internetError');
+                                icon = 'info';
+                                title = '정보';
+                                text = '인터넷연결이 끊겼습니다!'
+                                swalPreset(icon,title,text);
                             }else if(result.state == "success"){
                                 if(result.like == 1){
-                                    alert('좋아요를 눌렀습니다.');
+                                    icon = 'success';
+                                    title = '성공';
+                                    text = '좋아요를 눌렀습니다!'
+                                    swalPreset(icon,title,text);
                                 }else if(result.like == 0){
-                                    alert('좋아요를 해제했습니다.');
+                                    icon = 'info';
+                                    title = '정보';
+                                    text = '좋아요를 해제했습니다!'
+                                    swalPreset(icon,title,text);
                                 }
                                 document.getElementById("modal-border-like").innerText = result.count;
                             }
-
                         }
                     });
                 }else if(i == 1){
@@ -65,20 +80,45 @@ function modal__events() {
                         url: "BorderDislike",
                         async: false,
                         type: 'post',
+                        dataType: 'json',
                         data: {cm_b_code: cm_b_code, member_id: member_id},
                         success: function (data){
-
+                            let result = data;
+                            if(result.state == "self"){
+                                icon = 'warning';
+                                title = '경고';
+                                text = '본인글에는 싫어요를 누를 수 없습니다!'
+                                swalPreset(icon,title,text);
+                            } else if(result.state == "fail"){
+                                icon = 'error';
+                                title = '오류';
+                                text = '싫어요를 실패했습니다!'
+                                swalPreset(icon,title,text);
+                            }else if(result.state == "internetError"){
+                                icon = 'info';
+                                title = '정보';
+                                text = '인터넷연결이 끊겼습니다!'
+                                swalPreset(icon,title,text);
+                            }else if(result.state == "success"){
+                                if(result.like == 1){
+                                    icon = 'success';
+                                    title = '성공';
+                                    text = '싫어요를 눌렀습니다!'
+                                    swalPreset(icon,title,text);
+                                }else if(result.like == 0){
+                                    icon = 'info';
+                                    title = '정보';
+                                    text = '싫어요를 해제했습니다!'
+                                    swalPreset(icon,title,text);
+                                }
+                                document.getElementById("modal-border-dislike").innerText = result.count;
+                            }
                         }
                     });
                 }
             })
         }
     }
-
-    //수정하기
-    document.getElementById("edit-modal-border").addEventListener("click", ev => {
-        alert('수정하기 버튼 클릭');
-    })
 
     //뒤로가기
     document.getElementById("close-modal-border").addEventListener("click", ev => {

@@ -7,8 +7,8 @@
                     <li><a href="main.jsp">Home</a></li>
                     <li><a href="matchingMain.jsp">Matching</a></li>
                     <li><a href="community.jsp">Community</a></li>
-                    <li><a href="404error.jsp">Grade</a></li>
-                    <li><a href="500error.jsp">CS</a></li>
+                    <li><a href="ranking.jsp">Rank</a></li>
+                    <li><a href="cs.jsp">CS</a></li>
                     <% if (session.getAttribute("member_id") == null){ %>
                     <li><a href="login.jsp">Login</a></li>
                     <li><a href="agreeJoin.jsp">Sign in</a></li>

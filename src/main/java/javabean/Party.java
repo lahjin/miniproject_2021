@@ -24,6 +24,11 @@ public class Party {
         this.party_state = party_state;
     }
 
+    public Party(String party_member, String party_service) {
+        this.party_member = party_member;
+        this.party_service = party_service;
+    }
+
     public String getParty_code() {
         return party_code;
     }

@@ -139,7 +139,8 @@
     justify-content: center;
 }
 
-.modal-nine-Line > button{
+.modal-nine-Line > button ,
+.modal-nine-Line > a > button{
     margin: 10px;
     width: 100px;
     height: 40px;
@@ -150,10 +151,10 @@
     cursor: pointer;
 }
 
-.modal-nine-Line > button:first-child{
+.modal-nine-Line > a> button{
     background-color: rgb(65, 105, 225);
 }
 
-.modal-nine-Line > button:last-child{
+.modal-nine-Line > button{
     background-color: rgb(136, 136, 136);
 }

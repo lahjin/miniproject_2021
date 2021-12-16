@@ -307,26 +307,15 @@ public class MemberDAO{
         return ott;
     }
 
-
-    //아래부턴 임시영역
-    //임시 관리자 계정 만들기 메소드
-    public int makeAdmin() {
-        String selectSQL = "select member_code from member where member_code = 'A7e53a2001'";
-        String insertSQL = "INSERT INTO `miniproject`.`member` (" +
-                "`member_code`, `member_id`, `member_pwd`, `member_name`, `member_email`, " +
-                "`member_phone`, `member_birth`, `member_gender`, `member_nickname`, " +
-                "`member_grade`, `member_type`)" +
-                "VALUES ('A7e53a2001', 'admin', 'admin123', '관리자', 'admin@gmail.com', " +
-                "'01012345678', '2021-09-30', '남', '이스트레이터', '관리', '관리자');\n";
+    //로그인로그를 바꿔주는 메소드
+    public int updateMemberLog(String datetime, String member_code){
+        int result = -1;
+        String sql = "UPDATE member SET member_log = ? WHERE (member_code = ?)";
         try {
-            pstmt = mysqlDB.getConn().prepareStatement(selectSQL);
-            rs = pstmt.executeQuery();
-            if (!rs.next()) {
-                pstmt = mysqlDB.getConn().prepareStatement(insertSQL);
-                pstmt.executeUpdate();
-                return 0; //관리자 계정 생성 성공
-            }
-            return 1; //이미 존재함 생성 실패
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, datetime);
+            pstmt.setString(2,member_code);
+            result = pstmt.executeUpdate();
         } catch (Exception e) {
         } finally {
             try {
@@ -336,6 +325,191 @@ public class MemberDAO{
             } catch (Exception e) {
             }
         }
-        return -1; //db연결 끊김
+        return result;
+    }
+
+    //회원등급점수 상위 50위 추산 메소드 (닉네임/점수)
+    public String[][] rank50List(){
+        String[][] rank = new String[50][2];
+        String sql = "SELECT member_nickname, member_grade FROM member " +
+                "WHERE member_type = '일반' " +
+                "ORDER BY member_grade DESC LIMIT 50";
+        int row = 0, col = 0;
+
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                rank[row][col++] = rs.getString("member_nickname");
+                rank[row++][col] = rs.getString("member_grade");
+                col = 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return rank;
+    }
+    //현재 비밀번호를 리턴하는 메소드
+    public String nowPwd(String member_code){
+        String pwd = null;
+        String sql = "SELECT member_pwd FROM member WHERE member_code = ?";
+
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, member_code);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                pwd = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return pwd;
+    }
+
+    //비밀번호 변경 메소드
+    public int updatePwd(String member_code, String member_pwd){
+        int result = -1;
+        String sql = "UPDATE member " +
+                "SET member_pwd = ? WHERE (member_code = ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, member_pwd);
+            pstmt.setString(2, member_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
+
+    //닉네임 변경 메소드
+    public int updateNickname(String member_code, String member_nickname){
+        int result = -1;
+        String sql = "UPDATE member " +
+                "SET member_nickname = ? WHERE (member_code = ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, member_nickname);
+            pstmt.setString(2, member_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
+
+    //회원 탈퇴 메소드
+    public int deleteMember(String member_code){
+        int result = -1;
+        String sql = "UPDATE member " +
+                "SET member_status = '탈퇴' WHERE (member_code = ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, member_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
+
+    //포인트 변경 메소드
+    public int updateMemberPoint(String member_code, int member_point ,int amount){
+        int result = -1;
+        String sql = "UPDATE member " +
+                "SET member_point = ? WHERE (member_code = ?);";
+
+        int total = amount + member_point;
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,total);
+            pstmt.setString(2, member_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
+
+    //랭킹포인트 변경 메소드
+    public int updateMemberGrade(String member_code, int addGrade){
+        int result = -1;
+        String sql = "UPDATE member SET member_grade = ? WHERE (member_code = ?)";
+
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1,addGrade);
+            pstmt.setString(2, member_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
     }
 }

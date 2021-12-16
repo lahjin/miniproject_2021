@@ -197,7 +197,7 @@
                         if(i < dailyList.size()){
                             String[] member = new MemberDAO().memberPartyInfo(dailyList.get(i).getCm_b_member());
                 %>
-                            <a href=""><li>
+                            <a href="javascript:void(0);"><li>
                                 <h3><%=dailyList.get(i).getCm_b_title()%></h3>
                                 <h4><%=dailyList.get(i).getCm_b_subTitle()%></h4>
                                 <h5><%=member[0]%></h5>
@@ -224,7 +224,7 @@
                         if (i < weeklyList.size()) {
                             String[] member = new MemberDAO().memberPartyInfo(weeklyList.get(i).getCm_b_member());
                 %>
-                            <a href=""><li>
+                            <a href="javascript:void(0);"><li>
                                 <h3><%=weeklyList.get(i).getCm_b_title()%></h3>
                                 <h4><%=weeklyList.get(i).getCm_b_subTitle()%></h4>
                                 <h5><%=member[0]%></h5>
@@ -251,7 +251,7 @@
                         if (i < monthlyList.size()) {
                             String[] member = new MemberDAO().memberPartyInfo(monthlyList.get(i).getCm_b_member());
                 %>
-                <a href=""><li>
+                <a href="javascript:void(0);"><li>
                     <h3><%=monthlyList.get(i).getCm_b_title()%></h3>
                     <h4><%=monthlyList.get(i).getCm_b_subTitle()%></h4>
                     <h5><%=member[0]%></h5>

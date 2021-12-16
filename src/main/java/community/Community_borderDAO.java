@@ -3,6 +3,7 @@ package community;
 import DB.ConnectDB;
 import DB.MysqlMgr;
 import javabean.Community_border;
+import javabean.OTT;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -330,5 +331,225 @@ public class Community_borderDAO {
             }
         }
         return member;
+    }
+
+    //특정 회원의 작성한 글갯수를 리턴하는 메소드
+    public int memberToCount(String cm_b_member){
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM community_border WHERE cm_b_member = ? AND cm_b_state = '등록'";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,cm_b_member);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return count;
+    }
+
+    //특정 회원의 좋아요를 누른 글의 갯수를 리턴하는 메소드
+    public int memberToLikeCount(String cm_b_member){
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM community_likes WHERE cm_li_member = ? AND cm_li_state = 1";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,cm_b_member);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return count;
+    }
+
+    //특정 회원의 싫어요를 누른 글의 갯수를 리턴하는 메소드
+    public int memberToDisLikeCount(String cm_b_member){
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM community_dislikes WHERE cm_dis_member = ? AND cm_dis_state = 1";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,cm_b_member);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return count;
+    }
+
+
+    //특정회원이 작성한 모든글의 조회수
+    public int memberToHits(String cm_b_member){
+        int count = 0;
+        String sql = "SELECT SUM(cm_b_hits) FROM community_border WHERE cm_b_member = ? AND cm_b_state = '등록'";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1,cm_b_member);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return count;
+    }
+    
+    //특정 회원이 작성한 커뮤니티 글 갯수를 리턴하는 메소드
+    public int upTimeMyBorderCount(String cm_b_member){
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM community_border WHERE cm_b_member = ? AND cm_b_state = '등록'";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, cm_b_member);
+            rs = pstmt.executeQuery();
+            if (rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return count;
+    }
+
+    //특정 회원이 작성한 커뮤니티 글을 리턴하는 메소드
+    public ArrayList<Community_border> selectMyBorder(String cm_b_member, int skipIndex, int countIndex){
+        ArrayList<Community_border> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM community_border WHERE cm_b_member = ? AND cm_b_state = '등록' ORDER BY cm_b_date DESC LIMIT ?, ?";
+
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, cm_b_member);
+            pstmt.setInt(2, skipIndex);
+            pstmt.setInt(3, countIndex);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Community_border(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),
+                        rs.getString(13),rs.getString(14)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return list;
+    }
+
+    //선택한 글 수정 메소드
+    public int updateBorder(Community_border cm_b){
+        int result = -1;
+        String sql = "UPDATE community_border " +
+                "SET cm_b_service = ?, cm_b_title = ?, cm_b_subTitle = ?, cm_b_genre1 = ?, cm_b_genre2 = ?, cm_b_content = ?, " +
+                "cm_b_star = ? WHERE (cm_b_code = ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setString(1, cm_b.getCm_b_service());
+            pstmt.setString(2, cm_b.getCm_b_title());
+            pstmt.setString(3, cm_b.getCm_b_subTitle());
+            pstmt.setString(4, cm_b.getCm_b_genre1());
+            pstmt.setString(5, cm_b.getCm_b_genre2());
+            pstmt.setString(6, cm_b.getCm_b_content());
+            pstmt.setInt(7, cm_b.getCm_b_star());
+            pstmt.setInt(8, cm_b.getCm_b_code());
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
+
+    //선택한 글 삭제 메소드
+    public int deleteBorder(int cm_b_code){
+        int result = -1;
+        String sql = "UPDATE community_border " +
+                "SET cm_b_state = '삭제' WHERE (cm_b_code = ?);";
+        try {
+            pstmt = mysqlDB.getConn().prepareStatement(sql);
+            pstmt.setInt(1, cm_b_code);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (mysqlDB.getConn() != null) mysqlDB.getConn().close();
+            } catch (Exception e) {
+            }
+        }
+        return result;
     }
 }

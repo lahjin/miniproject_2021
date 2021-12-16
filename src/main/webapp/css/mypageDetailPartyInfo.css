@@ -1,0 +1,201 @@
+/* 모덜창 영역 */
+.mypage-party-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mypage-party-modal {
+    margin: 10px;
+    width: 600px;
+    height: auto;
+    padding: 20px 60px;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+}
+
+.mypage-party-modal > .party-modal-top {
+    width: 550px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypage-party-modal > .party-modal-top > img {
+    width: 100px;
+    height: 40px;
+}
+
+.mypage-party-modal > .party-modal-middle {
+    width: 100%;
+    display: flex;
+}
+
+/* 파티정보 */
+.mypage-party-modal > .party-modal-middle > .partyinfo {
+    width: 300px;
+    height: 340px;
+    margin: 5px;
+    background-color: rgba(240, 240, 240, 0.637);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .party-code {
+    margin: 5px;
+    margin-top: 20px;
+    width: 270px;
+    height: 75px;
+    background-color: #00C1FF;
+    border-radius: 10px;
+    color: white;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .party-ready {
+    margin: 5px;
+    width: 270px;
+    height: 75px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .party-ready > .user-count {
+    width: 130px;
+    height: 75px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fec32b;
+    line-height: 35px;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .party-ready > .ready {
+    margin-left: 10px;
+    width: 130px;
+    height: 75px;
+    border-radius: 10px;
+    background-color: #f93d00
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .party-ready > .ready > h2 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .count-date {
+    margin: 5px;
+    width: 270px;
+    height: 85px;
+    background-color: #DEF2FF;
+    border-radius: 10px;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .count-date > h2 {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.mypage-party-modal > .party-modal-middle > .partyinfo > .money {
+    margin: 5px;
+    width: 270px;
+    height: 40px;
+    background-color: #03cc97;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* 유저정보 */
+.mypage-party-modal > .party-modal-middle > .userinfo {
+    margin: 5px;
+    width: 300px;
+    height: 340px;
+    border-radius: 5%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    vertical-align: middle;
+    background-color: rgba(248, 248, 248, 0.9);
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .toptext {
+    width: 90%;
+    margin: 5px;
+    text-align: left;
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .user {
+    width: auto;
+    height: 65px;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    color: black;
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .user > .userimage {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #5ab5d7;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .user > .username {
+    width: 188px;
+    text-align: left;
+    padding: 5px;
+}
+
+/* 유저 날짜 */
+.mypage-party-modal > .party-modal-middle > .userinfo > .user > .username > .userdate {
+    font-size: 12px;
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .user > .userrank {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #5255db;
+    color: white;
+    margin-right: 10px;
+}
+
+.mypage-party-modal > .party-modal-middle > .userinfo > .user > .userrank > h2 {
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+}
+
+
+.mypage-party-modal > .party-modal-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.mypage-party-modal > .party-modal-bottom > input {
+    background-color: #888;
+    color: white;
+    font-weight: 700;
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.mypage-party-modal > .party-modal-bottom > input:nth-child(1) {
+    background-color: royalblue;
+}

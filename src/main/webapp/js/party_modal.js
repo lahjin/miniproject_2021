@@ -38,7 +38,8 @@ function partyModalInfo(index, fee){
                 }
             }
         }
-    });
+    })
+
 }
 
 //모달창 파티가입버튼

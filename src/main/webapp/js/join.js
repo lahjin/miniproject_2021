@@ -84,12 +84,13 @@ document.getElementById("member_pwd").addEventListener("blur", () =>{
         toastPreset(icon, title);
         $("#validityCheck_pwd").removeClass().addClass(ERROR_CLASS);
         validInfo[1] = false;
-        //비밀번호와 비밀번호 재확인까지 다 체크하고 나서 다시 비밀번호를 변경했을 때 대비
-        if (validInfo[2] == true) {
-            $("#validityCheck_pwd2").removeClass().addClass(ERROR_CLASS);
-            validInfo[1] = false;
-        }
         return false;
+    }
+
+    //비밀번호와 비밀번호 재확인까지 다 체크하고 나서 다시 비밀번호를 변경했을 때 대비
+    if (validInfo[1] == true && validInfo[2] == true) {
+        $("#validityCheck_pwd2").removeClass().addClass(ERROR_CLASS);
+        validInfo[2] = false;
     }
     const pwdReg = /^(?=.*[A-Za-z])(?=.*\d).{8,16}$/g; //최소 한개의 문자 + 숫자 특수문자는 선택 8~16글자
 

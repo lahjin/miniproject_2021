@@ -2,6 +2,7 @@
 <%@ page import="member.MemberDAO" %>
 <%@ page import="generator.CodeGenerator" %>
 <%@ page import="entry.EntryDAO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("utf-8"); %> <%-- post방식 한글인코딩 깨짐 문제 해결--%>
 <html>
@@ -38,6 +39,11 @@
                 String entry_code = new CodeGenerator().entryCodeGenerator(party_code);
                 int eResult = new EntryDAO().addEntry(entry_code, party_code,member_code);
                 if (eResult == 1){
+                    String member_id = (String) session.getAttribute("member_id");
+                    ArrayList<Object> member = new MemberDAO().myInfo(member_id);
+
+                    int addPoint = (int)member.get(9) + 10;
+                    int grade = new MemberDAO().updateMemberGrade(member_code,addPoint);
     %>
             <script>
                 let icon = "success";

@@ -3,6 +3,7 @@
 <%@ page import="party.PartyDAO" %>
 <%@ page import="member.MemberDAO" %>
 <%@ page import="javabean.Party" %>
+<%@ page import="grade.GradeDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
     if(session.getAttribute("member_id") == null){
@@ -33,7 +34,7 @@
     </div>
 
     <!-- 파티 영역 -->
-    <div class="party-area">
+    <div class="cash-area">
         <!-- 상단 텍스트 영역 -->
 
         <div class="top-text">
@@ -48,11 +49,12 @@
                         String[] memberInfo = new MemberDAO().memberPartyInfo(list.get(cnt).getParty_member());
                         int fee = (int) (Math.ceil(Integer.parseInt(service[2]) / 100 / list.get(cnt).getParty_total())*100 + 500);
                         fee = Integer.parseInt(String.format("%4d", fee));
+                        String grade = new GradeDAO().myGrade(Integer.parseInt(memberInfo[1]));
             %>
                 <div class="party-info">
                     <div class="top-text">
                         <h3><%=memberInfo[0]%>님의 파티</h3>
-                        <h3><%=memberInfo[1]%></h3>
+                        <h3><%=grade%></h3>
                     </div>
                     <!-- 유저 매칭현황 요약 -->
                     <span class="date"><%=list.get(cnt).getParty_start()%></span>

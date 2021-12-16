@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.firstdiv {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color:  royalblue;
+    height: auto;
+    color: white;
+}
+
+.sidebar > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar hr {
+    margin: auto;
+    width: 75%;
+}
+
+/* 유저에 대한 정보 */
+.userinfo {
+    width: 250px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.bigul {
+    margin: 10px 0px 10px 0px;
+    text-align: left;
+    width: 150px;
+    list-style: none;
+}
+
+.bigul > li {
+    cursor: pointer;
+}
+
+.bigul a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.bigul > .main-topic {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.bigul > .small-topic {
+    width: 100%;
+    list-style: none;
+    margin-left: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* 사이드바 끝 */
+
+.real-big {
+    margin: 50px;
+    width: 1300px;
+    height: 880px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bigbox {
+    width: 1270px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.textbox {
+    margin-left: 50px;
+    width: 1270px;
+    height: auto;
+    text-align: left;
+}
+
+.textbox > h2 {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.textbox > hr {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 1200px;
+}
+/* 공지사항 텍스트 끝 */
+/* 게시물 제목,날짜 */
+
+.title {
+    margin-top: 5px;
+    width: 1200px;
+    height: 40px;
+    font-weight: 700;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.title > span {
+    font-size: 18px;
+    margin-left: 40px;
+    margin-right: 50px;
+}
+
+/* 게시물 제목,날짜  끝*/
+
+/* 컨텐츠 */
+.contents-text
+{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contents-text hr {
+    margin-top: 10px;
+    width: 1200px;
+    border: 1px solid black;
+}
+
+.contents-text h1 {
+    color: #35c5f0;
+}
+
+.contents-text > .text-area {
+    padding: 0px;
+    font-size: 18px;
+    color: black;
+    width: 1150px;
+    height: auto;
+}
+
+.contents-text > .answer-area {
+    font-size: 18px;
+    color: black;
+    margin-top: 10px;
+    width: 1150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.admin-answer {
+
+}
+
+.admin-answer > textarea {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 1150px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #a9a9a9;
+    font-size: 16px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    resize: none; /* textarea를 조정할 수 있는걸 막아준다.*/
+    margin-bottom: 10px;
+}
+
+.admin-btnbox {
+    width: 1200px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-btnbox input {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 20px;
+    border: 1px solid #a9a9a9;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-btnbox .firstbtn {
+    margin-left: 80px;
+}
+
+/* 컨텐츠 끝 */
+
+/* 바텀박스 */
+.bottombox {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 1200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.bottombox input {
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    font-weight: 700;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid rgba(68, 68, 68, 0.541);
+    cursor: pointer;
+}

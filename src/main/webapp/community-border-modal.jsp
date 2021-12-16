@@ -144,7 +144,15 @@
                     </div>
                 </div>
                 <div class="modal-nine-Line">
-                    <button type="button" id="edit-modal-border">수정하기</button>
+                    <%
+                        String member_code = new MemberDAO().idToCode(member_id);
+                        if(list.get(1).equals(member_code)){
+                    %>
+                    <a href="mypageDetail.jsp?category=borderEdit&pageNo=<%=pageNo%>"><button type="button" id="edit-modal-border">수정하기</button></a>
+                    <%
+                        }
+                    %>
+
                     <button type="button" id="close-modal-border">뒤로가기</button>
                 </div>
             </div>

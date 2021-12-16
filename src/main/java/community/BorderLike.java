@@ -1,7 +1,6 @@
 package community;
 
 import member.MemberDAO;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/BorderLike")
 public class BorderLike extends HttpServlet {
@@ -40,6 +40,11 @@ public class BorderLike extends HttpServlet {
         if(cm_li[0] == 0){
             result = new Community_likesDAO().likeBorder(cm_b_code, member_code);
             jsonObject.put("like",1);
+
+            ArrayList<Object> member = new MemberDAO().myInfo(member_id);
+
+            int addPoint = (int)member.get(9) + 3;
+            int grade = new MemberDAO().updateMemberGrade(member_code,addPoint);
         }
         //좋아요를 누른적이 있음
         else{

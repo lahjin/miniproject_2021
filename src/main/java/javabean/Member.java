@@ -12,7 +12,7 @@ public class Member {
     private String member_birth;    //회원생년월일
     private String member_gender;   //회원성별
     private String member_nickname; //회원닉네임
-    private String member_grade;    //회원등급
+    private int member_grade;    //회원등급
     private String member_signdate; //회원가입일
     private String member_status;   //회원상태
     private String member_type;     //회원구분
@@ -95,11 +95,11 @@ public class Member {
         this.member_nickname = member_nickname;
     }
 
-    public String getMember_grade() {
+    public int getMember_grade() {
         return member_grade;
     }
 
-    public void setMember_grade(String member_grade) {
+    public void setMember_grade(int member_grade) {
         this.member_grade = member_grade;
     }
 

@@ -1,0 +1,122 @@
+.userarea {
+    width: 350px;
+    padding: 50px;
+    padding-top: 0px;
+    border-radius: 20px;
+    margin: 20px;
+    border: 1px solid rgba(192, 192, 192, 0.329);
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.329);
+}
+
+.userarea > .title-text {
+    margin: 10px 0px 0px 0px;
+    font-size: 30px;
+    text-align: left;
+}
+
+.userarea > hr {
+    margin: 10px 0px 10px 0px;
+    width: 350px;
+}
+
+.userarea > .userinfo-box {
+    width: 300px;
+    height: auto;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.userarea > .userinfo-box > .profile-image{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: royalblue;
+    margin-bottom: 10px;
+}
+
+.userarea > .userinfo-box > input {
+    width: 80px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid rgb(155, 155, 155);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.userarea > .edit {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 0px -20px;
+}
+
+.userarea > .edit > input{
+    width: 200px;
+    padding: 10px;
+    border: 1px solid rgb(97, 97, 97);
+}
+
+.userarea > .edit > h3 {
+    width: 150px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.userarea > .btn-box  {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userarea > .notice {
+    width: 300px;
+    height: 200px;
+    background-color: rgb(226, 226, 226);
+    border-radius: 20px;
+    margin: 20px 0px 10px 25px;
+}
+
+.userarea > .notice > h3 {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.userarea > .notice > ul {
+    width: 300px;
+    text-align: left;
+    font-weight: 500;
+    list-style: none;
+}
+
+.userarea > .notice > ul > li {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.userarea > .btn-box {
+    width: auto;
+
+}
+
+.userarea > .btn-box > input {
+    width: 75px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid rgb(155, 155, 155);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+
+.userarea > .btn-box > input:first-child {
+    background-color: royalblue;
+    color: white;
+}
+

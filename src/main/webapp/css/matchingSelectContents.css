@@ -43,7 +43,7 @@
 /* 사이드바 영역 끝 */
 
 /* 파티 영역 시작 */
-.party-area {
+.cash-area {
     margin-left: 20px;
     padding-top: 80px;
     width: 800px;
@@ -54,11 +54,11 @@
 }
 
 /* 상단 "파티 찾기" 영역 */
-.party-area > .top-text {
+.cash-area > .top-text {
     margin: 40px 0px 10px 0px;
 }
 
-.party-area > .top-text > p {
+.cash-area > .top-text > p {
     font-size: 15px;
 }
 

@@ -1,0 +1,166 @@
+
+/* 현재 정보 알려주는 div */
+.now-info {
+    width: 790px;
+    height: auto;
+    border-radius: 20px;
+    margin-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: #f2f4f6;
+}
+
+.now-info > h2 {
+    margin: 10px;
+    text-align: left;
+}
+
+.now-info > .Detail {
+    width: 790px;
+    margin-top: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.now-info > .Detail > .Detail-info {
+    width: 245px;
+    height: 60px;
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.now-info > .Detail > .Detail-info > .first-icon {
+    width: 40px;
+    height: 40px;
+    background-color: slateblue;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 100%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.now-info > .Detail > .Detail-info .info-box {
+    width: 200px;
+    text-align: left;
+}
+
+.now-info > .Detail > .Detail-info h4 {
+    font-size: 20px;
+    margin: 0px 0px 0px 10px;
+    color: #333d4b;
+}
+
+.now-info > .Detail > .Detail-info span {
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+    color: #5d5d5e;
+    font-weight: 700;
+}
+
+.userarea {
+    border-radius: 20px ;
+    width: 800px;
+    padding: 20px;
+
+}
+
+.userarea > .title-text {
+    width: 300px;
+    margin-top: 30px;
+    font-size: 30px;
+
+}
+
+.userarea > hr {
+    margin: 10px 0px 0px 0px;
+    width: 300px;
+}
+
+.userarea > .flex-parent {
+    width: 950px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.userarea > .flex-parent div {
+    width: 250px;
+    height: 250px;
+    margin: 10px 0px 0px 15px;
+    background-color: #f2f4f6;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.userarea  .profile {
+    width: 750px;
+    height: 150px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+
+}
+
+.userarea .profile > .userimage {
+    background-image: url('../asset/icon/question.png');
+    background-size: cover;
+    margin-left: 20px;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+
+
+}
+
+.userarea .profile > h3 {
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.userarea > .flex-parent div > h3 {
+    margin-left: 10px;
+}
+
+.userarea > .flex-parent div > span {
+    margin-left: 10px;
+    width: 260px;
+    height: 50px;
+    font-size: 15px;
+}
+
+.userarea > .flex-parent div > a > .edit-btn {
+    margin-left: 10px;
+    background-color: #ffffff;
+    color: #333333;
+    width: 75px;
+    height: 35px;
+    border: 1px solid rgb(97, 97, 97);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.userarea > .flex-parent div > a > .secession {
+    background-color: royalblue;
+    color: white;
+}
+
+
